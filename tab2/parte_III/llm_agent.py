@@ -16,6 +16,9 @@ Características:
 """
 
 import argparse
+import asyncio
+import logging
+import re
 import random
 from typing import Any, Dict, List
 
@@ -23,6 +26,8 @@ from base_agent import BaseAgent
 from fasta2a import A2AApp, tool
 
 app = A2AApp(name="LLMAgent")
+
+logger = logging.getLogger(__name__)
 
 
 class LLMAgent(BaseAgent):
@@ -86,75 +91,201 @@ class LLMAgent(BaseAgent):
 
     @tool()
     async def select_card_by_clue(self, clue: str) -> Dict[str, Any]:
-        # Estratégia simples:
-        # escolhe a carta cujo título tem mais palavras em comum com a dica.
-        # Se nenhuma tiver interseção, escolhe aleatoriamente.
+        """
+        Escolhe qual carta da mão melhor representa a dica do narrador.
+        Plano A: usa a LLM, que responde com o ÍNDICE da música na mão (0..n-1).
+        Plano B: heurística de interseção de palavras-chave (fallback).
+
+        Nota: pedimos o ÍNDICE na mão, não o ID do catálogo. O espaço de
+        respostas válidas é muito menor (0..3 em vez de IDs arbitrários do
+        catálogo), o que reduz alucinação e permite reaproveitar o parser
+        já testado pelo professor (_parse_song_choice) em vez de garimpar
+        o primeiro número que aparecer na resposta.
+        """
         if not self.hand:
-            raise RuntimeError("Hand is empty")
+            logger.warning(f"[{self.name}] Mão vazia recebida em select_card_by_clue.")
+            return {"chosen_card": {}}
 
-        clue_words = self._normalize_words(clue)
+        n = len(self.hand)
+        chosen_idx: int | None = None
 
-        best_score = -1
-        best_indices: List[int] = []
-
+        # PLANO A: NÚCLEO SEMÂNTICO (LLM)
+        prompt = f"Dica do narrador: '{clue}'\n"
+        prompt += "Estas são as músicas da sua mão:\n"
         for idx, song in enumerate(self.hand):
-            title_words = self._normalize_words(song.get("title", ""))
-            score = len(clue_words.intersection(title_words))
-            if score > best_score:
-                best_score = score
-                best_indices = [idx]
-            elif score == best_score:
-                best_indices.append(idx)
+            snippet = song.get("lyrics", "").replace("\n", " ")[:100]
+            prompt += f"{idx}: {song.get('title', '?')} | Letra: {snippet}\n"
+        prompt += (
+            f"\nResponda APENAS com o número do ÍNDICE (0 a {n - 1}) "
+            "da música que melhor combina com a dica."
+        )
 
-        if best_score <= 0:
-            chosen_idx = random.randrange(len(self.hand))
-        else:
-            chosen_idx = best_indices[0]
+        try:
+            llm_response = await asyncio.wait_for(
+                self.llm_generate(prompt, max_tokens=8, temperature=0.3),
+                timeout=60.0,
+            )
+            chosen_idx = self._parse_song_choice(llm_response, n_options=n)
+            if chosen_idx is not None:
+                logger.info(
+                    f"[{self.name}] LLM escolheu índice {chosen_idx}: "
+                    f"{self.hand[chosen_idx].get('title')}"
+                )
+        except asyncio.TimeoutError:
+            logger.warning(f"[{self.name}] Timeout da LLM em select_card_by_clue. Usando fallback.")
+        except Exception as e:
+            logger.warning(f"[{self.name}] Erro na LLM em select_card_by_clue: {e}. Usando fallback.")
+
+        # PLANO B: FALLBACK HEURÍSTICO (interseção de palavras-chave)
+        if chosen_idx is None:
+            clue_words = set(self._extract_keywords(clue))
+
+            best_score = -1.0
+            best_indices: List[int] = []
+
+            for idx, song in enumerate(self.hand):
+                song_words = set(self._song_keywords(song, limit=15))
+                score = len(clue_words.intersection(song_words))
+                if any(word in song.get("title", "").lower() for word in clue_words):
+                    score += 0.5
+
+                if score > best_score:
+                    best_score = score
+                    best_indices = [idx]
+                elif score == best_score:
+                    best_indices.append(idx)
+
+            if best_score <= 0:
+                chosen_idx = random.randrange(n)
+                logger.info(f"[{self.name}] Fallback: nenhuma interseção, escolha aleatória.")
+            else:
+                chosen_idx = best_indices[0]
+                logger.info(f"[{self.name}] Fallback: escolha por interseção de palavras-chave.")
 
         return {"chosen_card": self.hand[chosen_idx]}
+    
+    def _find_own_option_index(self, options: List[Dict[str, Any]], my_card: Dict[str, Any]) -> int:
+        """
+        Localiza o índice da própria carta dentro de `options`.
+
+        Tenta casar por 'id' (campo esperado pelo protocolo). Se não
+        encontrar - por exemplo, se a chave vier nomeada diferente -,
+        tenta casar por (título, artista) como rede de segurança. Loga um
+        aviso se nem assim conseguirmos identificar a carta, pois isso
+        indicaria uma incompatibilidade de formato que vale investigar
+        antes da competição (rode uma partida e confira o formato real
+        de `options` e `my_chosen_card` recebidos pelo Game Master).
+        """
+        my_id = my_card.get("id")
+        if my_id is not None:
+            for i, opt in enumerate(options):
+                if opt.get("id") == my_id:
+                    return i
+
+        my_title = my_card.get("title")
+        if my_title is not None:
+            for i, opt in enumerate(options):
+                if opt.get("title") == my_title and opt.get("artist") == my_card.get("artist"):
+                    return i
+
+        logger.warning(
+            f"[{self.name}] Não foi possível identificar a própria carta em 'options' "
+            "(nem por id, nem por título+artista). Nenhum índice será excluído por padrão."
+        )
+        return -1
 
     @tool()
-    async def vote(self, clue: str, options: List[Dict[str, Any]], my_chosen_card: Dict[str, Any]) -> Dict[str, Any]:
-        # Estratégia simples:
-        # tenta votar nas duas opções com maior interesecao entre dica e título.
-        # Se n der certo, vota nas duas primeiras que não forem a própria carta.
-        my_idx = next(i for i, option in enumerate(options) if option["id"] == my_chosen_card["id"])
-        clue_words = self._normalize_words(clue)
+    async def vote(self, clue: str, options: List[Dict[str, Any]], my_chosen_card: Dict[str, Any]) -> Dict[str, List[int]]:
+        """
+        Escolhe em quais cartas votar na rodada.
+        Deve retornar exatamente 2 índices distintos, nenhum deles igual ao
+        índice da própria carta jogada.
 
-        scored: List[tuple[int, int]] = []
-        for idx, option in enumerate(options):
-            if idx == my_idx:
+        Plano A: pede à LLM um JSON com dois índices (0 a 5).
+        Plano B: garimpa números na MESMA resposta crua, sem nova chamada à LLM.
+        Plano C: heurística de interseção de palavras-chave.
+        Plano D (rede de segurança): completa com índices válidos restantes,
+        garantindo que o contrato (2 votos distintos, sem auto-voto) nunca
+        seja violado, mesmo em cenários inesperados.
+        """
+        my_idx = self._find_own_option_index(options, my_chosen_card)
+        valid_indices = [i for i in range(len(options)) if i != my_idx]
+        final_votes: List[int] = []
+
+        prompt = f"Dica do narrador: '{clue}'\n"
+        prompt += "Quais duas destas músicas melhor combinam com a dica?\n\n"
+        for i, opt in enumerate(options):
+            if i == my_idx:
                 continue
-            title_words = self._normalize_words(option.get("title", ""))
-            score = len(clue_words.intersection(title_words))
-            scored.append((score, idx))
+            snippet = opt.get("lyrics", "").replace("\n", " ")[:80]
+            prompt += f"Opção {i}: {opt.get('title', '?')} | Letra: {snippet}\n"
+        prompt += (
+            '\nRetorne APENAS um JSON no formato exato: {"votes": [opcaoA, opcaoB]} '
+            "usando os números das Opções acima (0 a 5)."
+        )
 
-        scored.sort(reverse=True)
+        raw_text = ""
+        try:
+            raw_text = await asyncio.wait_for(
+                self.llm_generate(prompt, max_tokens=25, temperature=0.1),
+                timeout=60.0,
+            )
+        except Exception as e:
+            logger.warning(f"[{self.name}] LLM falhou em vote: {e}")
 
-        votes: List[int] = []
-        for _, idx in scored:
-            if idx != my_idx and idx not in votes:
-                votes.append(idx)
-            if len(votes) == 2:
-                break
+        # PLANO A: parsing como JSON
+        if raw_text:
+            parsed = self._extract_json_object(raw_text)
+            if parsed and isinstance(parsed.get("votes"), list):
+                for v in parsed["votes"]:
+                    try:
+                        v_int = int(v)
+                    except (TypeError, ValueError):
+                        continue
+                    if v_int in valid_indices and v_int not in final_votes:
+                        final_votes.append(v_int)
+                    if len(final_votes) == 2:
+                        break
 
-        if len(votes) < 2:
-            for idx in range(len(options)):
-                if idx != my_idx and idx not in votes:
-                    votes.append(idx)
-                if len(votes) == 2:
+        # PLANO B: garimpar números na MESMA resposta crua (sem nova chamada à LLM;
+        # o Plano A já usou a única chamada que faremos ao serviço)
+        if len(final_votes) < 2 and raw_text:
+            for n in (int(x) for x in re.findall(r"\d+", raw_text)):
+                if n in valid_indices and n not in final_votes:
+                    final_votes.append(n)
+                if len(final_votes) == 2:
                     break
 
-        return {"votes": votes[:2]}
+        # PLANO C: heurística de interseção de palavras-chave
+        if len(final_votes) < 2:
+            logger.info(f"[{self.name}] Usando fallback heurístico para votação.")
+            scored = [
+                (self._score_song_for_clue(options[i], clue), i)
+                for i in valid_indices
+                if i not in final_votes
+            ]
+            scored.sort(reverse=True, key=lambda x: x[0])
+            for _, idx in scored:
+                final_votes.append(idx)
+                if len(final_votes) == 2:
+                    break
 
-    def _normalize_words(self, text: str) -> set[str]:
-        # normaliza palavras no texto e devolve como um conjunto
-        cleaned = []
-        for token in text.lower().split():
-            token = "".join(ch for ch in token if ch.isalnum())
-            if token:
-                cleaned.append(token)
-        return set(cleaned)
+        # PLANO D: rede de segurança final - garante o contrato sempre,
+        # independentemente do que tenha acontecido acima. Itera sobre uma
+        # lista finita (não usa "while True"), então nunca trava o agente.
+        final_votes = [v for v in final_votes if v in valid_indices]
+        deduped: List[int] = []
+        for v in final_votes:
+            if v not in deduped:
+                deduped.append(v)
+        final_votes = deduped
+
+        if len(final_votes) < 2:
+            remaining = [i for i in valid_indices if i not in final_votes]
+            random.shuffle(remaining)
+            final_votes.extend(remaining[: 2 - len(final_votes)])
+
+        return {"votes": final_votes[:2]}
 
 
 def main() -> None:
