@@ -1,0 +1,1874 @@
+{
+  "timestamp": "2026-06-16T23:55:15.938233",
+  "agents": [
+    {
+      "id": 0,
+      "type": "strategic",
+      "name": "LLMAgent_1"
+    },
+    {
+      "id": 1,
+      "type": "random",
+      "name": "RandomAgent_2"
+    },
+    {
+      "id": 2,
+      "type": "random",
+      "name": "RandomAgent_3"
+    },
+    {
+      "id": 3,
+      "type": "random",
+      "name": "RandomAgent_4"
+    },
+    {
+      "id": 4,
+      "type": "random",
+      "name": "RandomAgent_5"
+    },
+    {
+      "id": 5,
+      "type": "random",
+      "name": "RandomAgent_6"
+    }
+  ],
+  "initial_hands": [
+    {
+      "agent": 0,
+      "agent_name": "LLMAgent_1",
+      "cards": [
+        {
+          "id": 69,
+          "title": "Balancê",
+          "artist": "Gal Costa",
+          "lyrics": "Ô balancê balancê\nQuero dançar com você\nEntra na roda morena pra ver\nÔ balancê balancê\nQuando por mim você passa\nFingindo que não me vê\nMeu coração quase se despedaça\nNo balancê balancê\nRefrão\nVocê foi minha cartilha\nVocê foi meu abc\nE por isso eu sou a maior maravilha\nNo balancê balancê\nRefrão\nEu levo a vida pensando\nPensando só em você\nE o tempo passa e eu vou me acabando\nNo balancê balancê"
+        },
+        {
+          "id": 0,
+          "title": "Garota de Ipanema",
+          "artist": "Tom Jobim",
+          "lyrics": "Olha que coisa mais linda\nMais cheia de graça\nÉ ela menina\nQue vem e que passa\nNum doce balanço\nA caminho do mar\nMoça do corpo dourado\nDo sol de Ipanema\nO seu balançado é mais que um poema\nÉ a coisa mais linda que eu já vi passar\nAh, por que estou tão sozinho?\nAh, por que tudo é tão triste?\nAh, a beleza que existe\nA beleza que não é só minha\nQue também passa sozinha\nAh, se ela soubesse\nQue quando ela passa\nO mundo inteirinho se enche de graça\nE fica mais lindo\nPor causa do amor (3x)\nPor causa do amor (2x)\nAh, se ela soubesse\nQue quando ela passa\nO mundo inteirinho se enche de graça\nE fica mais lindo\nPor causa do amor (3x)"
+        },
+        {
+          "id": 214,
+          "title": "O Calhambeque",
+          "artist": "Roberto Carlos",
+          "lyrics": "Mandei meu cadillac pro mecânico outro dia\nPois há muito tempo um conserto ele pedia\nComo vou viver sem meu carango pra correr\nMeu cadillac, bip, bip, quero consertar o cadillac\nCom muita paciência o rapaz me ofereceu\nUm carro todo velho que por lá apareceu\nEnquanto o cadillac consertava eu usava\nO calhambeque, bip, bip, quero buzinar o calhambeque\nSaí da oficina um pouquinho desolado\nConfesso que estava até um pouco envergonhado\nOlhando para o lado com a cara de malvado\nO calhambeque, bip, bip, buzinei assim o calhambeque\nE logo uma garota fez sinal para parar\nE no meu calhambeque fez questão de passear\nNão sei o que pensei, mas eu não acreditei\nQue o calhambeque, bip, bip, o broto quis andar no calhambeque\nE muitos outros brotos que encontrei pelo caminho\nFalavam \"que estouro, que beleza de carrinho\"\nE fui me acostumando e do carango fui gostando\nO calhambeque, bip, bip, quero conservar o calhambeque\nMas o cadillac finalmente ficou pronto\nLavado, consertado, bem pintado, um encanto\nMas o meu coração na hora exata de trocar\nO calhambeque, bip, bip\nMeu coração ficou com o calhambeque"
+        },
+        {
+          "id": 4,
+          "title": "Aquarela do Brasil",
+          "artist": "Francisco Alves",
+          "lyrics": "Brasil\nMeu Brasil brasileiro\nMeu mulato inzoneiro\nVou cantar-te nos meus versos\nÔ Brasil, samba que dá\nBamboleio, que faz gingar\nÔ Brasil, do meu amor\nTerra de, Nosso Senhor\nBrasil, Brasil\nPra mim, pra mim\nOh, abre a cortina do passado\nTira a Mãe Preta, do serrado\nBota o Rei Congo, no congado\nBrasil, Brasil\nDeixa, cantar de novo o trovador\nA merencória luz da lua\nToda canção do meu amor\nQuero ver a Sa Dona, caminhando\nPelos salões arrastando\nO seu vestido rendado\nBrasil, Brasil\nPra mim, pra mim\nBrasil\nTerra boa e gostosa\nDa morena sestrosa\nDe olhar indiscreto\nÔ Brasil, verde que dá\nPara o mundo, se admirar\nÔ Brasil, do meu amor\nTerra de, Nosso Senhor\nBrasil, Brasil\nPra mim, pra mim\nOh, esse coqueiro que dá côco\nOnde eu amarro a minha rede\nNas noites claras de luar\nBrasil, Brasil\nPra mim, pra mim\nOh, ouve essas fontes murmurantes\nAonde eu mato a minha sede\nE onde a lua vem brincar\nOh, este Brasil lindo e trigueiro\nÉ o meu Brasil, brasileiro\nTerra de samba e pandeiro\nBrasil, Brasil\nPra mim, pra mim"
+        }
+      ]
+    },
+    {
+      "agent": 1,
+      "agent_name": "RandomAgent_2",
+      "cards": [
+        {
+          "id": 96,
+          "title": "Coração de Papel",
+          "artist": "Sérgio Reis",
+          "lyrics": "Se você pensa que meu coração é de papel\nnão vá pensando pois não é\nele é igualzinho ao seu\ne sofre como eu\nporque fazer chorar assim a quem lhe ama\nSe você pensa em fazer chorar a quem lhe quer\na quem só pensa em você\num dia sentirá\nque amar é bom demais\nnão jogue o amor ao léu\nmeu coração que não é de papel\nPorque fazer chorar\nPorque fazer sofrer\num coração que só lhe quer\nO amor é lindo eu sei\ne todo eu lhe dei\nvocê não quis\njogou ao léu\nmeu coração que não é de papel [BIS]\nnão é ah ah\nmeu coração que não é de papel"
+        },
+        {
+          "id": 67,
+          "title": "O Canto da Cidade",
+          "artist": "Daniela Mercury",
+          "lyrics": "A cor dessa cidade sou eu O canto dessa cidade é meu A cor dessa cidade sou eu O canto dessa cidade é meu O gueto, a rua, a fé Eu vou andando a pé pela cidade bonita O toque do afoxé e a força de onde vem Ninguém explica, ela é bonita O gueto, a rua, a fé Eu vou andando a pé pela cidade bonita O toque do afoxé e a força de onde vem Ninguém explica, ela é bonita Uô ô verdadeiro amor Uô ô você vai onde eu vou Uô ô verdadeiro amor Uô ô você vai onde eu vou Não diga que não me quer Não diga que não quer mais Eu sou o silêncio da noite O sol da manhã Mil voltas o mundo tem Mas tem um ponto final Eu sou o primeiro que canta Eu sou o carnaval A cor dessa cidade sou eu O canto dessa cidade é meu A cor dessa cidade sou eu O canto dessa cidade é meu Não diga que não me quer Não diga que não quer mais Eu sou o silêncio da noite O sol da manhã Mil voltas o mundo tem Mas tem um ponto final Eu sou o primeiro que canta Eu sou o carnaval Uô ô verdadeiro amor Uô ô você vai onde eu vou Uô ô verdadeiro amor Uô ô você vai onde eu vou A cor dessa cidade sou eu O canto dessa cidade é meu A cor dessa cidade sou eu O canto dessa cidade é meu"
+        },
+        {
+          "id": 19,
+          "title": "Alagados",
+          "artist": "Os Paralamas do Sucesso",
+          "lyrics": "Todo dia o sol da manhã\nVem e lhes desafia\nTraz do sonho pro mundo\nQuem já não o queria\nPalafitas, trapiches, farrapos\nFilhos da mesma agonia\nE a cidade que tem braços abertos\nNum cartão postal\nCom os punhos fechados da vida real\nLhes nega oportunidades\nMostra a face dura do mal\nAlagados, Trenchtown, Favela da Maré\nA esperança não vem do mar\nNem das antenas de Tv\nA arte de viver dá fé\nSó não se sabe fé em quê\nA arte de viver dá fé\nSó não se sabe fé em quê\nTodo dia o sol da manhã\nVem e lhes desafia\nTraz do sonho pro mundo\nQuem já não o queria\nPalafitas, trapiches, farrapos\nFilhos da mesma agonia\nE a cidade que tem braços abertos\nNum cartão postal\nCom os punhos fechados da vida real\nLhes nega oportunidades\nMostra a face dura do mal\nAlagados, Trenchtown, Favela da Maré\nA esperança não vem do mar\nNem das antenas de Tv\nA arte de viver dá fé\nSó não se sabe fé em quê\nA arte de viver dá fé\nSó não se sabe fé em quê\nAlagados, Trenchtown, Favela da Maré\nA esperança não vem do mar\nNem das antenas de Tv\nA arte de viver dá fé\nSó não se sabe fé em quê\nA arte de viver dá fé\nSó não se sabe fé em quê\nAlagados, Trenchtown, Favela da Maré\nA esperança não vem do mar\nNem das antenas de Tv\nA arte de viver dá fé\nSó não se sabe fé em quê\nA arte de viver dá fé\nAlagados, Trenchtown, Favela da Maré\nA esperança não vem do mar\nNem das antenas de Tv\nA arte de viver dá fé\nSó não se sabe fé em quê\nA arte de viver dá fé\nMas a arte de viver dá fé\nSó não se sabe fé em quê\nA arte de viver dá fé\nSó não se sabe fé em quê\nA arte de viver dá fé"
+        },
+        {
+          "id": 223,
+          "title": "Olhar 43",
+          "artist": "RPM",
+          "lyrics": "Seu corpo é fruto proibido É a chave de todo pecado E da libido, e pra um garoto introvertido Como eu, é a pura perdição. É um lago negro, o seu olhar É água turva de beber, se envenenar Nas suas curvas derrapar, sair da estrada E morrer no mar. (no mar) É perigoso o seu sorriso, É um sorriso assim jocoso, impreciso, diria misterioso, indecifrável, riso de mulher. Não sei se é caça ou caçadora, Se é Diana ou Afrodite, ou se é Brigite, Stephanie de Mônaco, aqui estou inteiro ao seu dispor. (princesa) Pobre de mim, que invento rimas assim pra você, e um outro vem em cima e você nem pra me escutar. Pois acabou, não vou rimar coisa nenhuma Agora vai como sair Eu já não quero nem saber Se vai caber ou vão me censurar (será) E pra você eu deixo apenas Meu olhar 43, Aquele assim meio de lado Já saindo Indo embora, louco por você (que pena) Que desperdicio! (tesão)"
+        }
+      ]
+    },
+    {
+      "agent": 2,
+      "agent_name": "RandomAgent_3",
+      "cards": [
+        {
+          "id": 108,
+          "title": "É o Amor",
+          "artist": "Zezé Di Camargo & Luciano",
+          "lyrics": "Eu não vou negar que sou louco por você Tô maluco pra te ver Eu não vou negar Eu não vou negar sem você tudo é saudade Você traz felicidade Eu não vou negar *Eu não vou negar você é meu doce mel Meu pedacinho de céu Eu não vou negar Você é minha doce amada Minha alegria Meu conto de fada Minha fantasia A paz que eu preciso pra sobreviver Eu sou o seu apaixonado de alma transparente Um louco alucinado meio inconsequente Um caso complicado de se entender É o amor Que mexe com minha cabeça E me deixa assim Que faz eu pensar em você esquecer de mim Que faz eu esquecer que a vida é feita pra viver É o amor Que veio como um tiro certo no meu coração Que derrubou a base forte da minha paixão E fez eu entender que a vida é nada sem você (* repetir)"
+        },
+        {
+          "id": 20,
+          "title": "Como Nossos Pais",
+          "artist": "Elis Regina",
+          "lyrics": "Não quero lhe falar meu grande amor Das coisas que aprendi nos discos Quero lhe contar como eu vivi E tudo o que aconteceu comigo Viver é melhor que sonhar Eu sei que o amor é uma coisa boa Mas também sei Que qualquer canto é menor do que a vida De qualquer pessoa Por isso cuidado meu bem Há perigo na esquina Eles venceram e o sinal Está fechado pra nós Que somos jovens... Para abraçar seu irmão E beijar sua menina, na lua É que se fez o seu braço, O seu lábio e a sua voz... Você me pergunta pela minha paixão Digo que estou encantada como uma nova invenção Eu vou ficar nesta cidade não vou voltar pro sertão Pois vejo vir vindo no vento cheiro da nova estação Eu sei de tudo na ferida viva do meu coração... Já faz tempo eu vi você na rua Cabelo ao vento, gente jovem reunida Na parede da memória essa lembrança É o quadro que dói mais... Minha dor é perceber Que apesar de termos feito tudo o que fizemos Ainda somos os mesmos e vivemos Ainda somos os mesmos e vivemos Como os nossos pais... Nossos ídolos ainda são os mesmos E as aparências não enganam não Você diz que depois deles não apareceu mais ninguém Você pode até dizer que eu tô por fora Ou então que eu tô inventando... Mas é você que ama o passado e que não vê É você que ama o passado e que não vê Que o novo sempre vem... Hoje eu sei que quem me deu a ideia De uma nova consciência e juventude Tá em casa, guardado por Deus Contando vil metal... Minha dor é perceber que apesar de termos Feito tudo, tudo, tudo o que fizemos Nós ainda somos os mesmos e vivemos Ainda somos os mesmos e vivemos Ainda somos os mesmos e vivemos Como os nossos pais..."
+        },
+        {
+          "id": 207,
+          "title": "Mulher de Fases",
+          "artist": "Raimundos",
+          "lyrics": "Que mulher ruim\nJogou minhas \"coisa\" fora\nDisse que em sua cama eu não deito mais não\nA casa é minha, você que vá embora\nJá pra saia da sua mãe e deixa meu colchão\nEla é \"pró\" na arte de pentelhar e aziar\nÉ campeã do mundo\nA raiva era tanta que eu nem reparei que a lua diminuia\nA doida tá me beijando há horas\nDisse que se for sem eu não quer viver mais não\nMe diz, Deus, o que é que eu faço agora?\nSe me olhando desse jeito ela me tem na mão\n\"Meu filho, aguenta.\nQuem mandou você gostar\nDessa mulher de fases?\"\nComplicada e perfeitinha,\nVocê me apareceu.\nEra tudo que eu queria,\nEstrela da sorte.\nQuando à noite ela surgia,\nMeu bem, você cresceu...\nMeu namoro é na folhinha,\nMulher de fases.\nPõe fermento, põe as \"bomba\"\nQualquer coisa que aumente e a deixe bem maior que o Sol\nPouca gente sabe que, na noite, o frio é quente e arde e eu acendi\nAté sem luz dá pra te enxergar o lençol\nfazendo \"congo-blue\"\nÉ pena, eu sei, amanhã já vai miar... Se aguente,\nQue lá vem chumbo quente!\nComplicada e perfeitinha,\nVocê me apareceu.\nEra tudo que eu queria,\nEstrela da sorte.\nQuando à noite ela surgia,\nMeu bem você cresceu...\nMeu namoro é na folhinha,\nMulher de fases!\nComplicada e perfeitinha,\nVocê me apareceu.\nEra tudo que eu queria,\nEstrela da sorte.\nQuando à noite ela surgia,\nMeu bem você cresceu...\nMeu namoro é na folhinha"
+        },
+        {
+          "id": 182,
+          "title": "Vou Deixar",
+          "artist": "Skank",
+          "lyrics": "Vou deixar a vida me levar\nPra onde ela quiser\nEstou no meu lugar\nVocê já sabe onde é\nÉ, não conte o tempo por nós dois\nPois, a qualquer hora posso estar de volta\nDepois que a noite terminar\nVou deixar a vida me levar\nPra onde ela quiser\nSeguir a direção\nDe uma estrela qualquer\nÉ, não quero hora pra voltar, não\nConheço bem a solidão, me solta\nE deixa a sorte me buscar\nEu já estou na sua estrada\nSozinho não enxergo nada\nMas vou ficar aqui\nAté que o dia amanheça\nVou esquecer de mim\nE você, se puder, não me esqueça\nVou deixar o coração bater\nNa madrugada sem fim\nDeixar o sol te ver\nAjoelhada por mim, sim\nNão tenho hora pra voltar, não\nEu agradeço tanto a sua escolta\nMas deixa a noite terminar\nEu já estou na sua estrada\nSozinho não enxergo nada\nMas vou ficar aqui\nAté que o dia amanheça\nVou esquecer de mim\nE você, se puder, não me esqueça\nNão, não, não quero hora pra voltar, não\nConheço bem a solidão, me solta\nE deixa a sorte me buscar\nNão, não, não tenho hora pra voltar, não\nEu agradeço tanto a sua escolta\nMas deixa a noite terminar"
+        }
+      ]
+    },
+    {
+      "agent": 3,
+      "agent_name": "RandomAgent_4",
+      "cards": [
+        {
+          "id": 157,
+          "title": "Gita",
+          "artist": "Raul Seixas",
+          "lyrics": "\"Eu que já andei pelos quatro cantos do mundo procurando,\nfoi justamente num sonho que Ele me falou\"\nÀs vezes você me pergunta\nPor que é que eu sou tão calado\nNão falo de amor quase nada\nNem fico sorrindo ao teu lado\nVocê pensa em mim toda hora\nMe come, me cospe, me deixa\nTalvez você não entenda\nMas hoje eu vou lhe mostrar\nEu sou a luz das estrelas\nEu sou a cor do luar\nEu sou as coisas da vida\nEu sou o medo de amar\nEu sou o medo do fraco\nA força da imaginação\nO blefe do jogador\nEu sou, eu fui, eu vou\nGita gita gita gita gita\nEu sou o seu sacrifício\nA placa de contra-mão\nO sangue no olhar do vampiro\nE as juras de maldição\nEu sou a vela que acende\nEu sou a luz que se apaga\nEu sou a beira do abismo\nEu sou o tudo e o nada\nPor que você me pergunta\nPerguntas não vão lhe mostrar\nQue eu sou feito da terra\nDo fogo, da água e do ar\nVocê me tem todo dia\nMas não sabe se é bom ou ruim\nMas saiba que eu estou em você\nMas você não está em mim\nDas telhas eu sou o telhado\nA pesca do pescador\nA letra A tem meu nome\nDos sonhos eu sou o amor\nEu sou a dona de casa\nNos pegue-pagues do mundo\nEu sou a mão do carrasco\nSou raso, largo, profundo\nGita gita gita gita gita\nEu sou a mosca da sopa\nE o dente do tubarão\nEu sou os olhos do cego\nE a cegueira da visão\nMas eu sou o amargo da língua\nA mãe, o pai e o avô\nO filho que ainda não veio\nO início, o fim e o meio (2x)\nEu sou o início, o fim e o meio (3x)"
+        },
+        {
+          "id": 81,
+          "title": "Dois Rios",
+          "artist": "Skank",
+          "lyrics": "O céu está no chão\nO céu não cai do alto\nÉ o claro, é a escuridão\nO céu que toca o chão\nE o céu que vai no alto\nDois lados deram as mãos\nComo eu fiz também\nSó pra poder conhecer\nO que a voz da vida vem dizer\nQue os braços sentem\nE os olhos veem\nQue os lábios sejam\nDois rios inteiros\nSem direção\nO sol é o pé e a mão\nO sol é a mãe e o pai\nDissolve a escuridão\nO sol se põe se vai\nE após se pôr\nO sol renasce no Japão\nEu vi também\nSó pra poder entender\nNa voz da vida ouvi dizer\nQue os braços sentem\nE os olhos veem\nE os lábios beijam\nDois rios inteiros\nSem direção\nE o meu lugar é esse\nAo lado seu, no corpo inteiro\nDou o meu lugar pois o seu lugar\nÉ o meu amor primeiro\nO dia e a noite as quatro estações\nO céu está no chão\nO céu não cai do alto\nÉ o claro, é a escuridão\nO céu que toca o chão\nE o céu que vai no alto\nDois lados deram as mãos\nComo eu fiz também\nSó pra poder conhecer\nO que a voz da vida vem dizer\nQue os braços sentem\nE os olhos veem\nQue os lábios sejam\nDois rios inteiros\nSem direção\nE o meu lugar é esse\nAo lado seu, no corpo inteiro\nDou o meu lugar pois o seu lugar\nÉ o meu amor primeiro\nO dia e a noite as quatro estações\nQue os braços sentem\nE os olhos veem\nQue os lábios sejam\nDois rios inteiros\nSem direção"
+        },
+        {
+          "id": 116,
+          "title": "Último Desejo",
+          "artist": "Aracy de Almeida",
+          "lyrics": "Nosso amor que eu não esqueço\nE que teve seu começo\nNuma festa de São João\nMorre hoje sem foguete\nSem retrato e sem bilhete\nSem luar, sem violão\nPerto de você me calo\nTudo penso, nada falo\nTenho medo de chorar\nNunca mais quero o seu beijo\nMas meu último desejo\nVocê não pode negar\nSe alguma pessoa amiga\nPedir que você lhe diga\nSe você me quer ou não\nDiga que você me adora\nQue você lamenta e chora\nA nossa separação\nE às pessoas que detesto\nDiga sempre que eu não presto\nQue o meu lar é um botequim\nQue eu arruinei sua vida\nQue eu não mereço a comida\nQue você pagou pra mim"
+        },
+        {
+          "id": 86,
+          "title": "Apenas Um Rapaz Latino-americano",
+          "artist": "Belchior",
+          "lyrics": "Eu sou apenas um rapaz latino-americano\nSem dinheiro no banco,\nSem parentes importantes, e vindo do interior\n\nMas trago, de cabeça, uma canção do rádio\nEm que um antigo compositor baiano me dizia:\n\"tudo é divino, tudo é maravilhoso\"\n\nMas trago, de cabeça, uma canção do rádio\nEm que um antigo compositor baiano me dizia:\n\"tudo é divino, tudo é maravilhoso\"\n\nTenho ouvido muitos discos,\nConversado com pessoas, caminhado meu caminho\nPapo, som dentro da noite,\nE não tenho um amigo sequer\nE não acredite nisso, não.\nTudo muda e com toda razão!\n\nEu sou apenas um rapaz latino-americano\nSem dinheiro no banco,\nSem parentes importantes, e vindo do interior\n\nMas sei que tudo é proibido,\naliás, eu queria dizer\nQue tudo é permitido,\naté beijar você no escuro do cinema\nQuando ninguém nos vê\n\nMas sei que tudo é proibido,\naliás, eu queria dizer\nQue tudo é permitido,\naté beijar você no escuro do cinema\nQuando ninguém nos vê\n\nNão me peça que lhe faça uma canção como se deve\nCorreta, branca, suave, muito limpa, muito leve\nSons, palavras são navalhas\ne eu não posso cantar como convém\nSem querer ferir ninguém\n\nMas não se preocupe meu amigo\ncom os horrores que eu lhe digo\nIsso é somente uma canção,\nA vida, a vida realmente é diferente\nQuer dizer, ao vivo é muito pior!\n\nE eu sou apenas um rapaz latino-americano,\nsem dinheiro no banco\nPor favor não saque a arma no \"saloon\"\neu sou apenas o cantor\n\nMas se depois de cantar\nvocê ainda quiser me atirar\nMate-me logo, à tarde, às três,\nque à noite tenho um compromisso\nE não posso faltar, por causa de vocês\n\nMas se depois de cantar\nvocê ainda quiser me atirar\nMate-me logo, à tarde, às três,\nque à noite tenho um compromisso\nE não posso faltar, por causa de vocês\n\nEu sou apenas um rapaz latino-americano\nsem dinheiro no banco\nSem parentes importantes, e vindo do interior\n\nMas sei que nada é divino,\nnada, nada é maravilhoso\nNada, nada é secreto,\nnada, nada é misterioso, não\nNa na na na na na na na"
+        }
+      ]
+    },
+    {
+      "agent": 4,
+      "agent_name": "RandomAgent_5",
+      "cards": [
+        {
+          "id": 196,
+          "title": "Eu Quero Ver o Oco",
+          "artist": "Raimundos",
+          "lyrics": "Fizera pouco em tê-lo deixado\nTodo quebrado, desfigurado\nIrreconhecível até pra mãe\n- \"Mãe, olha só que legal,\nO carro que eu ganhei no natal,\nTu que me deu e disse cuidado pra que não arranhe\".\n- \"Menino doido! Tu quebrou até os friso!\nTem noção do prejuízo?\nAcho que teu véi vai te matar\".\nOs olhos dele esperando o carro do ano\nUm modelo italiano\nQue acabaram de inventar\nCarrão da porra tu pisava ele voava\nTu freiava ele ancorava\nE eu lá dentro a me debater\nNo bate-bate com a cabeça no volante\nVoei pelo vidro da frente\nE a raiva preta eu não pude conter\nCom o sangue quente cortei a testa\nQuebrei os dente e toda aquela gente\nPeste! Não vem ninguém me ajudar\nNem se mexiam pior que isso eles riam\nTeto preto, o tempo fecha\nOzóvo inflama, hora do pau cantar\nEu quero é ver o oco\nSó na mãozada eu deitei seis\nMas detestei matar\nEu quero é ver o oco\nSem controle tocando o fole\nÉ hora de dançar\nMeu ódio por automotores começou cedo\nDepois que eu tranquei os dedo\nNa porta dum opalão\nMeu pai de dentro se ria que se mijava\nAchou que o filho festejava\nEra dia de Cosme e Damião\nDepois do dedo foi o braço, a perna, as costas\nTu duvida? Bate uma aposta\nPois muitos vão lhe testemunhar\nTanta fratura que deixa a doutora louca\nÉ pino até no céu da boca\nTu cansa só de tentar contar\nEu quero é ver o oco\nÉ pedir muito uma enfermeira\nVir me ajudar\nEu quero é ver o oco\nUma enfermeira gente boa\nVem me medicar\nEu quero é ver o oco"
+        },
+        {
+          "id": 219,
+          "title": "Anjo",
+          "artist": "Roupa Nova",
+          "lyrics": "Se você vê estrelas demais\nLembre que um sonho não volta atrás\nChega perto e diz \"Anjo\"\nSe você sente o corpo colar\nSolte o seu medo bem devagar\nChega perto e diz \"Anjo\"\nBem mais perto e diz \"Anjo\"\nSe uma coisa louca\nSai do seu olhar\nFique em silêncio\nDeixa o amor entrar\nPra que tanta pressa de chegar\nSe eu sei o jeito e o lugar\nSe eu sei o jeito e o lugar"
+        },
+        {
+          "id": 58,
+          "title": "O Mar",
+          "artist": "Dorival Caymmi",
+          "lyrics": "O mar quando quebra na praia\nÉ bonito, é bonito\nO mar... pescador quando sai\nNunca sabe se volta, nem sabe se fica\nQuanta gente perdeu seus maridos seus filhos\nNas ondas do mar\nO mar quando quebra na praia\nÉ bonito, é bonito\nPedro vivia da pesca\nSaia no barco\nSeis horas da tarde\nSó vinha na hora do sol raiá\nTodos gostavam de Pedro\nE mais do que todas\nRosinha de Chica\nA mais bonitinha\nE mais bem feitinha\nDe todas as mocinha lá do arraiá\nPedro saiu no seu barco\nSeis horas da tarde\nPassou toda a noite\nNão veio na hora do sol raiá\nDeram com o corpo de Pedro\nJogado na praia\nRoído de peixe\nSem barco sem nada\nNum canto bem longe lá do arraiá\nPobre Rosinha de Chica\nQue era bonita\nAgora parece\nQue endoideceu\nVive na beira da praia\nOlhando pras ondas\nAndando rondando\nDizendo baixinho\nMorreu, morreu, morreu, oh...\nO mar quando quebra na praia"
+        },
+        {
+          "id": 13,
+          "title": "Ovelha Negra",
+          "artist": "Rita Lee",
+          "lyrics": "Levava uma vida sossegada Gostava de sombra E água fresca Meu Deus! Quanto tempo eu passei Sem saber! Uh! Uh!... Foi quando meu pai Me disse: \"Filha, você é a Ovelha Negra Da família\" Agora é hora de você assumir Uh! Uh! E sumir!... Baby Baby Não adianta chamar Quando alguém está perdido Procurando se encontrar Baby Baby Não vale a pena esperar Oh! Não! Tire isso da cabeça Ponha o resto no lugar Ah! Ah! Ah! Ah! Tchu! Tchu! Tchu! Tchu! Não! Oh! Oh! Ah! Tchu! Tchu! Ah! Ah!... Levava uma vida sossegada Gostava de sombra E água fresca Meu Deus! Quanto tempo eu passei Sem saber! Han!! Han!... Foi quando meu pai Me disse: \"Filha, você é a Ovelha Negra Da família\" Agora é hora de você assumir Uh! Uh! E sumir!... Baby Baby Não adianta chamar Quando alguém está perdido Procurando se encontrar Baby Baby Não vale a pena esperar Oh! Não! Tire isso da cabeça Ponha o resto no lugar Ah! Ah! Ah! Ah! Tchu! Tchu! Tchu! Tchu! Não! (Ovelha Negra da Família!) Tchu! Tchu! Tchu! Não! Vai sumir!..."
+        }
+      ]
+    },
+    {
+      "agent": 5,
+      "agent_name": "RandomAgent_6",
+      "cards": [
+        {
+          "id": 234,
+          "title": "Ciúme",
+          "artist": "Ultraje a Rigor",
+          "lyrics": "Eu quero levar uma vida moderninha Deixar minha menininha sair sozinha Não ser machista e não bancar o possessivo Ser mais seguro e não ser tão impulsivo Mas eu me mordo de ciúme Mas eu me mordo de ciúme Meu bem me deixa sempre muito à vontade Ela me diz que é muito bom ter liberdade Que não há mal nenhum em ter outra amizade E que brigar por isso é muita crueldade Mas eu me mordo de ciúme Mas eu me mordo de ciúme Eu quero levar uma vida moderninha Deixar minha menininha sair sozinha Não ser machista e não bancar o possessivo Ser mais seguro e não ser tão impulsivo Mas eu me mordo de ciúme Mas eu me mordo de ciúme O ôôô O ôôô Mas eu me mordo de ciúme Mas eu me mordo de ciúme Ciúme, ciúme Eu me mordo de ciúme Eu me mordo, eu me mordo de ciúme Eu me mordo, eu me rasgo, eu me acabo Eu falo bobagem, eu faço bobagem, eu dou vexame Eu faço, eu sigo, eu faço cenas de amor Ciúme, ciúme, eu me mordo"
+        },
+        {
+          "id": 76,
+          "title": "A Banda",
+          "artist": "Chico Buarque",
+          "lyrics": "Estava à toa na vida\nO meu amor me chamou\nPra ver a banda passar\nCantando coisas de amor\nA minha gente sofrida\nDespediu-se da dor\nPra ver a banda passar\nCantando coisas de amor\nO homem sério que contava dinheiro parou\nO faroleiro que contava vantagem parou\nA namorada que contava as estrelas parou\nPara ver, ouvir e dar passagem\nA moça triste que vivia calada sorriu\nA rosa triste que vivia fechada se abriu\nE a meninada toda se assanhou\nPra ver a banda passar\nCantando coisas de amor\nO velho fraco se esqueceu do cansaço e pensou\nQue ainda era moço pra sair no terraço e dançou\nA moça feia debruçou na janela\nPensando que a banda tocava pra ela\nA marcha alegre se espalhou na avenida e insistiu\nA lua cheia que vivia escondida surgiu\nMinha cidade toda se enfeitou\nPra ver a banda passar cantando coisas de amor\nMas para meu desencanto\nO que era doce acabou\nTudo tomou seu lugar\nDepois que a banda passou\nE cada qual no seu canto\nEm cada canto uma dor\nDepois da banda passar\nCantando coisas de amor\n© 1966 by Editora Musical Brasileira Moderna Ltda.\nAdministrada por Fermata do Brasil"
+        },
+        {
+          "id": 229,
+          "title": "Me Apaixonei Pela Pessoa Errada",
+          "artist": "Exaltasamba",
+          "lyrics": "Eu não tenho culpa de estar te amando De ficar pensando em você; toda hora Não entendo por que deixei acontecer E isso tudo me apavora Você não tem culpa se eu estou sofrendo Se fantasiei de verde esta história Você tem namorado posso até estar errado Mas tenho que ganhar você É mais do que desejo é muito mais do que amor Eu te vejo nos meus sonhos E isso aumenta mais a minha dor Eu me apaixonei pela pessoa errada Ninguém sabe o quanto que estou sofrendo Sempre que eu vejo ele do seu lado Morro de ciúme estou enlouquecendo (2x) Fica comigo Me deixa ao menos te tocar Entenda que ao meu lado é o seu lugar Eu me apaixonei pela pessoa errada Ninguém sabe o quanto que estou sofrendo Sempre que eu vejo ele do seu lado Morro de ciúme estou enlouquecendo (2x)"
+        },
+        {
+          "id": 40,
+          "title": "O Cachimbo da Paz",
+          "artist": "Gabriel O Pensador",
+          "lyrics": "A cri... (cough)\nA cri... (cough)\n\nA criminalidade toma conta da cidade\nA sociedade põe a culpa nas autoridades\nO cacique oficial viajou pro Pantanal\nPorque aqui a violência tá demais\nE lá encontrou um velho índio que usava um fio dental e fumava o Cachimbo da Paz\nO presidente deu um tapa no cachimbo e na hora de voltar pra capital ficou com preguiça\nTrocou seu palitó pelo fio dental e nomeou o velho índio pra Ministro da Justiça\n\nE o novo ministro, chegando na cidade, achou aquela tribo violenta demais\nViu que todo cara-pálida vivia atrás das grades e chamou a TV e os jornais\nE disse: \"Índio chegou, trazendo novidade índio trouxe Cachimbo da Paz\"\n\nMaresia, sente a maresia, maresia uuu...\nApaga fumaça do revólver, da pistola\nManda fumaça do cachimbo pra cachola\nAcende, puxa, prende, passa\nÍndio quer cachimbo, índio quer fazer fumaça\n\nTodo mundo experimenta o cachimbo da floresta\nDizem que é do bom, dizem que não presta\nQuerem proibir, querem liberar\nE a polêmica chegou até o congresso,\n\nTudo isso deve ser pra evitar a concorrência\nPorque não é Hollywood mas é o sucesso\nO Cachimbo da Paz deixou o povo mais tranquilo\nMas o fumo acabou porque só tinha oitenta quilos\nE o povo aplaudiu quando o índio partiu pra selva e prometeu voltar com uma tonelada\n\nSó que quando ele voltou \"Sujou\"!!!\nA Polícia Federal preparou uma cilada\n_\"O Cachimbo da Paz foi proibido.\nEntra na caçamba vagabundo! Vamô pra DP!\nÊ, ê, ê! Índio tá fudido porque lá o pau vai comer!\"\n\nMaresia, sente a maresia, maresia uuu...\nApaga fumaça do revólver, da pistola\nManda fumaça do cachimbo pra cachola\nAcende, puxa, prende, passa\nÍndio quer cachimbo, índio quer fazer fumaça\n\nNa delegacia só tinha viciado e delinquente\nCada um com um vício, um caso diferente\nUm cachaceiro esfaqueou o dono do bar porque ele não vendia pinga fiado\nE um senhor bebeu uísque demais, acordou com um travesti e assassinou o coitado\nUm viciado no jogo apostou a mulher, perdeu a aposta e ela foi sequestrada\n\nEra tanta ocorrência, tanta violência, que o índio não tava entendendo nada\nEle viu que o delegado fumava um charuto fedorento e acendeu um \"Da Paz\" pra relaxar\nMas quando foi dar um tapinha, levou um tapão violento e um chute naquele lugar\n\nFoi mandado pro presídio e no caminho assistiu um acidente provocado por excesso de cerveja:\nUma jovem que bebeu demais atropelou um padre e os noivos na porta da igreja\nE pro índio nada mais faz sentido\nCom tantas drogas porque só o seu cachimbo é proibido?\n\nMaresia, sente a maresia, maresia uuu...\nApaga fumaça do revólver, da pistola\nManda fumaça do cachimbo pra cachola\nAcende, puxa, prende, passa\nÍndio quer cachimbo, índio quer fazer fumaça\n\nNa penitenciaria o \"índio fora da lei\" conheceu os criminosos de verdade\nEntrando, saindo e voltando cada vez mais perigosos pra sociedade\n\nAí, cumpadí, tá rolando um sorteio na prisão\nPra reduzir a superlotação todo mês alguns presos tem que ser executados\nE o índio desta vez foi um dos sorteados e tentou acalmar os outros presos:\n\"Peraí, vâmo fuma um Cachimbinho da Paz\"...\nEles começaram a rir e espancaram o velho índio até não poder mais\n\nE antes de morrer ele pensou: \"essa tribo é atrasada demais. Eles querem acabar com a violência, Mas a paz é\ncontra lei e a lei é contra paz\"\n\nE o Cachimbo do índio continua proibido\nMas se você quer comprar é mais fácil que pão\nHoje em dia ele é vendido pelos mesmos bandidos que mataram o velho índio na prisão.\n\nMaresia, sente a maresia, maresia uuu...\nApaga fumaça do revólver, da pistola\nManda fumaça do cachimbo pra cachola\nAcende, puxa, prende, passa\nÍndio quer cachimbo, índio quer fazer fumaça"
+        }
+      ]
+    }
+  ],
+  "rounds": [
+    {
+      "round": 1,
+      "narrador": 0,
+      "narrador_option": 2,
+      "clue": "memória tempo cidade",
+      "played_cards": [
+        {
+          "option": 0,
+          "agent": 3,
+          "agent_name": "RandomAgent_4",
+          "card_id": 81,
+          "title": "Dois Rios",
+          "artist": "Skank",
+          "lyrics": "O céu está no chão\nO céu não cai do alto\nÉ o claro, é a escuridão\nO céu que toca o chão\nE o céu que vai no alto\nDois lados deram as mãos\nComo eu fiz também\nSó pra poder conhecer\nO que a voz da vida vem dizer\nQue os braços sentem\nE os olhos veem\nQue os lábios sejam\nDois rios inteiros\nSem direção\nO sol é o pé e a mão\nO sol é a mãe e o pai\nDissolve a escuridão\nO sol se põe se vai\nE após se pôr\nO sol renasce no Japão\nEu vi também\nSó pra poder entender\nNa voz da vida ouvi dizer\nQue os braços sentem\nE os olhos veem\nE os lábios beijam\nDois rios inteiros\nSem direção\nE o meu lugar é esse\nAo lado seu, no corpo inteiro\nDou o meu lugar pois o seu lugar\nÉ o meu amor primeiro\nO dia e a noite as quatro estações\nO céu está no chão\nO céu não cai do alto\nÉ o claro, é a escuridão\nO céu que toca o chão\nE o céu que vai no alto\nDois lados deram as mãos\nComo eu fiz também\nSó pra poder conhecer\nO que a voz da vida vem dizer\nQue os braços sentem\nE os olhos veem\nQue os lábios sejam\nDois rios inteiros\nSem direção\nE o meu lugar é esse\nAo lado seu, no corpo inteiro\nDou o meu lugar pois o seu lugar\nÉ o meu amor primeiro\nO dia e a noite as quatro estações\nQue os braços sentem\nE os olhos veem\nQue os lábios sejam\nDois rios inteiros\nSem direção"
+        },
+        {
+          "option": 1,
+          "agent": 4,
+          "agent_name": "RandomAgent_5",
+          "card_id": 196,
+          "title": "Eu Quero Ver o Oco",
+          "artist": "Raimundos",
+          "lyrics": "Fizera pouco em tê-lo deixado\nTodo quebrado, desfigurado\nIrreconhecível até pra mãe\n- \"Mãe, olha só que legal,\nO carro que eu ganhei no natal,\nTu que me deu e disse cuidado pra que não arranhe\".\n- \"Menino doido! Tu quebrou até os friso!\nTem noção do prejuízo?\nAcho que teu véi vai te matar\".\nOs olhos dele esperando o carro do ano\nUm modelo italiano\nQue acabaram de inventar\nCarrão da porra tu pisava ele voava\nTu freiava ele ancorava\nE eu lá dentro a me debater\nNo bate-bate com a cabeça no volante\nVoei pelo vidro da frente\nE a raiva preta eu não pude conter\nCom o sangue quente cortei a testa\nQuebrei os dente e toda aquela gente\nPeste! Não vem ninguém me ajudar\nNem se mexiam pior que isso eles riam\nTeto preto, o tempo fecha\nOzóvo inflama, hora do pau cantar\nEu quero é ver o oco\nSó na mãozada eu deitei seis\nMas detestei matar\nEu quero é ver o oco\nSem controle tocando o fole\nÉ hora de dançar\nMeu ódio por automotores começou cedo\nDepois que eu tranquei os dedo\nNa porta dum opalão\nMeu pai de dentro se ria que se mijava\nAchou que o filho festejava\nEra dia de Cosme e Damião\nDepois do dedo foi o braço, a perna, as costas\nTu duvida? Bate uma aposta\nPois muitos vão lhe testemunhar\nTanta fratura que deixa a doutora louca\nÉ pino até no céu da boca\nTu cansa só de tentar contar\nEu quero é ver o oco\nÉ pedir muito uma enfermeira\nVir me ajudar\nEu quero é ver o oco\nUma enfermeira gente boa\nVem me medicar\nEu quero é ver o oco"
+        },
+        {
+          "option": 2,
+          "agent": 0,
+          "agent_name": "LLMAgent_1",
+          "card_id": 4,
+          "title": "Aquarela do Brasil",
+          "artist": "Francisco Alves",
+          "lyrics": "Brasil\nMeu Brasil brasileiro\nMeu mulato inzoneiro\nVou cantar-te nos meus versos\nÔ Brasil, samba que dá\nBamboleio, que faz gingar\nÔ Brasil, do meu amor\nTerra de, Nosso Senhor\nBrasil, Brasil\nPra mim, pra mim\nOh, abre a cortina do passado\nTira a Mãe Preta, do serrado\nBota o Rei Congo, no congado\nBrasil, Brasil\nDeixa, cantar de novo o trovador\nA merencória luz da lua\nToda canção do meu amor\nQuero ver a Sa Dona, caminhando\nPelos salões arrastando\nO seu vestido rendado\nBrasil, Brasil\nPra mim, pra mim\nBrasil\nTerra boa e gostosa\nDa morena sestrosa\nDe olhar indiscreto\nÔ Brasil, verde que dá\nPara o mundo, se admirar\nÔ Brasil, do meu amor\nTerra de, Nosso Senhor\nBrasil, Brasil\nPra mim, pra mim\nOh, esse coqueiro que dá côco\nOnde eu amarro a minha rede\nNas noites claras de luar\nBrasil, Brasil\nPra mim, pra mim\nOh, ouve essas fontes murmurantes\nAonde eu mato a minha sede\nE onde a lua vem brincar\nOh, este Brasil lindo e trigueiro\nÉ o meu Brasil, brasileiro\nTerra de samba e pandeiro\nBrasil, Brasil\nPra mim, pra mim"
+        },
+        {
+          "option": 3,
+          "agent": 1,
+          "agent_name": "RandomAgent_2",
+          "card_id": 223,
+          "title": "Olhar 43",
+          "artist": "RPM",
+          "lyrics": "Seu corpo é fruto proibido É a chave de todo pecado E da libido, e pra um garoto introvertido Como eu, é a pura perdição. É um lago negro, o seu olhar É água turva de beber, se envenenar Nas suas curvas derrapar, sair da estrada E morrer no mar. (no mar) É perigoso o seu sorriso, É um sorriso assim jocoso, impreciso, diria misterioso, indecifrável, riso de mulher. Não sei se é caça ou caçadora, Se é Diana ou Afrodite, ou se é Brigite, Stephanie de Mônaco, aqui estou inteiro ao seu dispor. (princesa) Pobre de mim, que invento rimas assim pra você, e um outro vem em cima e você nem pra me escutar. Pois acabou, não vou rimar coisa nenhuma Agora vai como sair Eu já não quero nem saber Se vai caber ou vão me censurar (será) E pra você eu deixo apenas Meu olhar 43, Aquele assim meio de lado Já saindo Indo embora, louco por você (que pena) Que desperdicio! (tesão)"
+        },
+        {
+          "option": 4,
+          "agent": 5,
+          "agent_name": "RandomAgent_6",
+          "card_id": 76,
+          "title": "A Banda",
+          "artist": "Chico Buarque",
+          "lyrics": "Estava à toa na vida\nO meu amor me chamou\nPra ver a banda passar\nCantando coisas de amor\nA minha gente sofrida\nDespediu-se da dor\nPra ver a banda passar\nCantando coisas de amor\nO homem sério que contava dinheiro parou\nO faroleiro que contava vantagem parou\nA namorada que contava as estrelas parou\nPara ver, ouvir e dar passagem\nA moça triste que vivia calada sorriu\nA rosa triste que vivia fechada se abriu\nE a meninada toda se assanhou\nPra ver a banda passar\nCantando coisas de amor\nO velho fraco se esqueceu do cansaço e pensou\nQue ainda era moço pra sair no terraço e dançou\nA moça feia debruçou na janela\nPensando que a banda tocava pra ela\nA marcha alegre se espalhou na avenida e insistiu\nA lua cheia que vivia escondida surgiu\nMinha cidade toda se enfeitou\nPra ver a banda passar cantando coisas de amor\nMas para meu desencanto\nO que era doce acabou\nTudo tomou seu lugar\nDepois que a banda passou\nE cada qual no seu canto\nEm cada canto uma dor\nDepois da banda passar\nCantando coisas de amor\n© 1966 by Editora Musical Brasileira Moderna Ltda.\nAdministrada por Fermata do Brasil"
+        },
+        {
+          "option": 5,
+          "agent": 2,
+          "agent_name": "RandomAgent_3",
+          "card_id": 207,
+          "title": "Mulher de Fases",
+          "artist": "Raimundos",
+          "lyrics": "Que mulher ruim\nJogou minhas \"coisa\" fora\nDisse que em sua cama eu não deito mais não\nA casa é minha, você que vá embora\nJá pra saia da sua mãe e deixa meu colchão\nEla é \"pró\" na arte de pentelhar e aziar\nÉ campeã do mundo\nA raiva era tanta que eu nem reparei que a lua diminuia\nA doida tá me beijando há horas\nDisse que se for sem eu não quer viver mais não\nMe diz, Deus, o que é que eu faço agora?\nSe me olhando desse jeito ela me tem na mão\n\"Meu filho, aguenta.\nQuem mandou você gostar\nDessa mulher de fases?\"\nComplicada e perfeitinha,\nVocê me apareceu.\nEra tudo que eu queria,\nEstrela da sorte.\nQuando à noite ela surgia,\nMeu bem, você cresceu...\nMeu namoro é na folhinha,\nMulher de fases.\nPõe fermento, põe as \"bomba\"\nQualquer coisa que aumente e a deixe bem maior que o Sol\nPouca gente sabe que, na noite, o frio é quente e arde e eu acendi\nAté sem luz dá pra te enxergar o lençol\nfazendo \"congo-blue\"\nÉ pena, eu sei, amanhã já vai miar... Se aguente,\nQue lá vem chumbo quente!\nComplicada e perfeitinha,\nVocê me apareceu.\nEra tudo que eu queria,\nEstrela da sorte.\nQuando à noite ela surgia,\nMeu bem você cresceu...\nMeu namoro é na folhinha,\nMulher de fases!\nComplicada e perfeitinha,\nVocê me apareceu.\nEra tudo que eu queria,\nEstrela da sorte.\nQuando à noite ela surgia,\nMeu bem você cresceu...\nMeu namoro é na folhinha"
+        }
+      ],
+      "votes": [
+        [],
+        [
+          4,
+          0
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "votes_by_agent": [
+        {
+          "agent": 0,
+          "agent_name": "LLMAgent_1",
+          "own_option": 2,
+          "own_card_id": 4,
+          "voted_options": [],
+          "voted_agents": []
+        },
+        {
+          "agent": 1,
+          "agent_name": "RandomAgent_2",
+          "own_option": 3,
+          "own_card_id": 223,
+          "voted_options": [
+            4,
+            0
+          ],
+          "voted_agents": [
+            5,
+            3
+          ]
+        },
+        {
+          "agent": 2,
+          "agent_name": "RandomAgent_3",
+          "own_option": 5,
+          "own_card_id": 207,
+          "voted_options": [
+            1,
+            4
+          ],
+          "voted_agents": [
+            4,
+            5
+          ]
+        },
+        {
+          "agent": 3,
+          "agent_name": "RandomAgent_4",
+          "own_option": 0,
+          "own_card_id": 81,
+          "voted_options": [
+            2,
+            1
+          ],
+          "voted_agents": [
+            0,
+            4
+          ]
+        },
+        {
+          "agent": 4,
+          "agent_name": "RandomAgent_5",
+          "own_option": 1,
+          "own_card_id": 196,
+          "voted_options": [
+            3,
+            5
+          ],
+          "voted_agents": [
+            1,
+            2
+          ]
+        },
+        {
+          "agent": 5,
+          "agent_name": "RandomAgent_6",
+          "own_option": 4,
+          "own_card_id": 76,
+          "voted_options": [
+            3,
+            2
+          ],
+          "voted_agents": [
+            1,
+            0
+          ]
+        }
+      ],
+      "received_votes": [
+        1,
+        2,
+        2,
+        2,
+        2,
+        1
+      ],
+      "received_votes_by_agent": {
+        "3": 1,
+        "4": 2,
+        "0": 2,
+        "1": 2,
+        "5": 2,
+        "2": 1
+      },
+      "scores": [
+        3,
+        2,
+        1,
+        4,
+        2,
+        5
+      ],
+      "cumulative_scores": [
+        3,
+        2,
+        1,
+        4,
+        2,
+        5
+      ],
+      "drawn_cards": [
+        {
+          "agent": 0,
+          "agent_name": "LLMAgent_1",
+          "card_id": 248,
+          "title": "Fascinação"
+        },
+        {
+          "agent": 1,
+          "agent_name": "RandomAgent_2",
+          "card_id": 71,
+          "title": "Caminhemos"
+        },
+        {
+          "agent": 2,
+          "agent_name": "RandomAgent_3",
+          "card_id": 88,
+          "title": "Meu Bem Querer"
+        },
+        {
+          "agent": 3,
+          "agent_name": "RandomAgent_4",
+          "card_id": 95,
+          "title": "Juventude Transviada"
+        },
+        {
+          "agent": 4,
+          "agent_name": "RandomAgent_5",
+          "card_id": 79,
+          "title": "Realce"
+        },
+        {
+          "agent": 5,
+          "agent_name": "RandomAgent_6",
+          "card_id": 101,
+          "title": "Vamos Fugir"
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "narrador": 1,
+      "narrador_option": 1,
+      "clue": "não fazer pensa coração porque chorar",
+      "played_cards": [
+        {
+          "option": 0,
+          "agent": 5,
+          "agent_name": "RandomAgent_6",
+          "card_id": 101,
+          "title": "Vamos Fugir",
+          "artist": "Gilberto Gil",
+          "lyrics": "Vamos fugir\nDeste lugar, baby\nVamos fugir\nTô cansado de esperar\nQue você me carregue\nVamos fugir\nProutro lugar, baby\nVamos fugir\nPronde quer que você vá\nQue você me carregue\nPois diga que irá\nIrajá, Irajá\nPronde eu só veja você\nVocê veja a mim só\nMarajó, Marajó\nQualquer outro lugar comum\nOutro lugar qualquer\nGuaporé, Guaporé\nQualquer outro lugar ao sol\nOutro lugar ao sul\nCéu azul, céu azul\nOnde haja só meu corpo nu\nJunto ao seu corpo nu\nVamos fugir\nProutro lugar, baby\nVamos fugir\nPronde haja um tobogã\nOnde a gente escorregue\nTodo dia de manhã\nFlores que a gente regue\nUma banda de maçã\nOutra banda de reggae\n© Gege Edições Musicais ltda (Brasil e América do Sul) / Preta Music (Resto do mundo)"
+        },
+        {
+          "option": 1,
+          "agent": 1,
+          "agent_name": "RandomAgent_2",
+          "card_id": 96,
+          "title": "Coração de Papel",
+          "artist": "Sérgio Reis",
+          "lyrics": "Se você pensa que meu coração é de papel\nnão vá pensando pois não é\nele é igualzinho ao seu\ne sofre como eu\nporque fazer chorar assim a quem lhe ama\nSe você pensa em fazer chorar a quem lhe quer\na quem só pensa em você\num dia sentirá\nque amar é bom demais\nnão jogue o amor ao léu\nmeu coração que não é de papel\nPorque fazer chorar\nPorque fazer sofrer\num coração que só lhe quer\nO amor é lindo eu sei\ne todo eu lhe dei\nvocê não quis\njogou ao léu\nmeu coração que não é de papel [BIS]\nnão é ah ah\nmeu coração que não é de papel"
+        },
+        {
+          "option": 2,
+          "agent": 3,
+          "agent_name": "RandomAgent_4",
+          "card_id": 116,
+          "title": "Último Desejo",
+          "artist": "Aracy de Almeida",
+          "lyrics": "Nosso amor que eu não esqueço\nE que teve seu começo\nNuma festa de São João\nMorre hoje sem foguete\nSem retrato e sem bilhete\nSem luar, sem violão\nPerto de você me calo\nTudo penso, nada falo\nTenho medo de chorar\nNunca mais quero o seu beijo\nMas meu último desejo\nVocê não pode negar\nSe alguma pessoa amiga\nPedir que você lhe diga\nSe você me quer ou não\nDiga que você me adora\nQue você lamenta e chora\nA nossa separação\nE às pessoas que detesto\nDiga sempre que eu não presto\nQue o meu lar é um botequim\nQue eu arruinei sua vida\nQue eu não mereço a comida\nQue você pagou pra mim"
+        },
+        {
+          "option": 3,
+          "agent": 2,
+          "agent_name": "RandomAgent_3",
+          "card_id": 88,
+          "title": "Meu Bem Querer",
+          "artist": "Djavan",
+          "lyrics": "Meu bem-querer É segredo, é sagrado Está sacramentado Em meu coração Meu bem-querer Tem um \"quê\" de pecado Acariciado pela emoção Meu bem-querer, meu encanto Tô sofrendo tanto Amor E o que é o sofrer Para mim que estou Jurado pra morrer de amor? © 1980 Ed. Musicais Tapajós"
+        },
+        {
+          "option": 4,
+          "agent": 4,
+          "agent_name": "RandomAgent_5",
+          "card_id": 13,
+          "title": "Ovelha Negra",
+          "artist": "Rita Lee",
+          "lyrics": "Levava uma vida sossegada Gostava de sombra E água fresca Meu Deus! Quanto tempo eu passei Sem saber! Uh! Uh!... Foi quando meu pai Me disse: \"Filha, você é a Ovelha Negra Da família\" Agora é hora de você assumir Uh! Uh! E sumir!... Baby Baby Não adianta chamar Quando alguém está perdido Procurando se encontrar Baby Baby Não vale a pena esperar Oh! Não! Tire isso da cabeça Ponha o resto no lugar Ah! Ah! Ah! Ah! Tchu! Tchu! Tchu! Tchu! Não! Oh! Oh! Ah! Tchu! Tchu! Ah! Ah!... Levava uma vida sossegada Gostava de sombra E água fresca Meu Deus! Quanto tempo eu passei Sem saber! Han!! Han!... Foi quando meu pai Me disse: \"Filha, você é a Ovelha Negra Da família\" Agora é hora de você assumir Uh! Uh! E sumir!... Baby Baby Não adianta chamar Quando alguém está perdido Procurando se encontrar Baby Baby Não vale a pena esperar Oh! Não! Tire isso da cabeça Ponha o resto no lugar Ah! Ah! Ah! Ah! Tchu! Tchu! Tchu! Tchu! Não! (Ovelha Negra da Família!) Tchu! Tchu! Tchu! Não! Vai sumir!..."
+        },
+        {
+          "option": 5,
+          "agent": 0,
+          "agent_name": "LLMAgent_1",
+          "card_id": 0,
+          "title": "Garota de Ipanema",
+          "artist": "Tom Jobim",
+          "lyrics": "Olha que coisa mais linda\nMais cheia de graça\nÉ ela menina\nQue vem e que passa\nNum doce balanço\nA caminho do mar\nMoça do corpo dourado\nDo sol de Ipanema\nO seu balançado é mais que um poema\nÉ a coisa mais linda que eu já vi passar\nAh, por que estou tão sozinho?\nAh, por que tudo é tão triste?\nAh, a beleza que existe\nA beleza que não é só minha\nQue também passa sozinha\nAh, se ela soubesse\nQue quando ela passa\nO mundo inteirinho se enche de graça\nE fica mais lindo\nPor causa do amor (3x)\nPor causa do amor (2x)\nAh, se ela soubesse\nQue quando ela passa\nO mundo inteirinho se enche de graça\nE fica mais lindo\nPor causa do amor (3x)"
+        }
+      ],
+      "votes": [
+        [
+          1,
+          2
+        ],
+        [],
+        [
+          5,
+          4
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          5,
+          2
+        ]
+      ],
+      "votes_by_agent": [
+        {
+          "agent": 0,
+          "agent_name": "LLMAgent_1",
+          "own_option": 5,
+          "own_card_id": 0,
+          "voted_options": [
+            1,
+            2
+          ],
+          "voted_agents": [
+            1,
+            3
+          ]
+        },
+        {
+          "agent": 1,
+          "agent_name": "RandomAgent_2",
+          "own_option": 1,
+          "own_card_id": 96,
+          "voted_options": [],
+          "voted_agents": []
+        },
+        {
+          "agent": 2,
+          "agent_name": "RandomAgent_3",
+          "own_option": 3,
+          "own_card_id": 88,
+          "voted_options": [
+            5,
+            4
+          ],
+          "voted_agents": [
+            0,
+            4
+          ]
+        },
+        {
+          "agent": 3,
+          "agent_name": "RandomAgent_4",
+          "own_option": 2,
+          "own_card_id": 116,
+          "voted_options": [
+            4,
+            5
+          ],
+          "voted_agents": [
+            4,
+            0
+          ]
+        },
+        {
+          "agent": 4,
+          "agent_name": "RandomAgent_5",
+          "own_option": 4,
+          "own_card_id": 13,
+          "voted_options": [
+            1,
+            3
+          ],
+          "voted_agents": [
+            1,
+            2
+          ]
+        },
+        {
+          "agent": 5,
+          "agent_name": "RandomAgent_6",
+          "own_option": 0,
+          "own_card_id": 101,
+          "voted_options": [
+            5,
+            2
+          ],
+          "voted_agents": [
+            0,
+            3
+          ]
+        }
+      ],
+      "received_votes": [
+        0,
+        2,
+        2,
+        1,
+        2,
+        3
+      ],
+      "received_votes_by_agent": {
+        "5": 0,
+        "1": 2,
+        "3": 2,
+        "2": 1,
+        "4": 2,
+        "0": 3
+      },
+      "scores": [
+        6,
+        3,
+        1,
+        2,
+        5,
+        0
+      ],
+      "cumulative_scores": [
+        9,
+        5,
+        2,
+        6,
+        7,
+        5
+      ],
+      "drawn_cards": [
+        {
+          "agent": 1,
+          "agent_name": "RandomAgent_2",
+          "card_id": 28,
+          "title": "Apesar de Você"
+        },
+        {
+          "agent": 0,
+          "agent_name": "LLMAgent_1",
+          "card_id": 241,
+          "title": "Ouça"
+        },
+        {
+          "agent": 2,
+          "agent_name": "RandomAgent_3",
+          "card_id": 160,
+          "title": "Sina"
+        },
+        {
+          "agent": 3,
+          "agent_name": "RandomAgent_4",
+          "card_id": 55,
+          "title": "Ideologia"
+        },
+        {
+          "agent": 4,
+          "agent_name": "RandomAgent_5",
+          "card_id": 106,
+          "title": "Tristeza do Jeca"
+        },
+        {
+          "agent": 5,
+          "agent_name": "RandomAgent_6",
+          "card_id": 51,
+          "title": "Como Eu Quero"
+        }
+      ]
+    },
+    {
+      "round": 3,
+      "narrador": 2,
+      "narrador_option": 4,
+      "clue": "pra onde não vou deixar vida",
+      "played_cards": [
+        {
+          "option": 0,
+          "agent": 5,
+          "agent_name": "RandomAgent_6",
+          "card_id": 40,
+          "title": "O Cachimbo da Paz",
+          "artist": "Gabriel O Pensador",
+          "lyrics": "A cri... (cough)\nA cri... (cough)\n\nA criminalidade toma conta da cidade\nA sociedade põe a culpa nas autoridades\nO cacique oficial viajou pro Pantanal\nPorque aqui a violência tá demais\nE lá encontrou um velho índio que usava um fio dental e fumava o Cachimbo da Paz\nO presidente deu um tapa no cachimbo e na hora de voltar pra capital ficou com preguiça\nTrocou seu palitó pelo fio dental e nomeou o velho índio pra Ministro da Justiça\n\nE o novo ministro, chegando na cidade, achou aquela tribo violenta demais\nViu que todo cara-pálida vivia atrás das grades e chamou a TV e os jornais\nE disse: \"Índio chegou, trazendo novidade índio trouxe Cachimbo da Paz\"\n\nMaresia, sente a maresia, maresia uuu...\nApaga fumaça do revólver, da pistola\nManda fumaça do cachimbo pra cachola\nAcende, puxa, prende, passa\nÍndio quer cachimbo, índio quer fazer fumaça\n\nTodo mundo experimenta o cachimbo da floresta\nDizem que é do bom, dizem que não presta\nQuerem proibir, querem liberar\nE a polêmica chegou até o congresso,\n\nTudo isso deve ser pra evitar a concorrência\nPorque não é Hollywood mas é o sucesso\nO Cachimbo da Paz deixou o povo mais tranquilo\nMas o fumo acabou porque só tinha oitenta quilos\nE o povo aplaudiu quando o índio partiu pra selva e prometeu voltar com uma tonelada\n\nSó que quando ele voltou \"Sujou\"!!!\nA Polícia Federal preparou uma cilada\n_\"O Cachimbo da Paz foi proibido.\nEntra na caçamba vagabundo! Vamô pra DP!\nÊ, ê, ê! Índio tá fudido porque lá o pau vai comer!\"\n\nMaresia, sente a maresia, maresia uuu...\nApaga fumaça do revólver, da pistola\nManda fumaça do cachimbo pra cachola\nAcende, puxa, prende, passa\nÍndio quer cachimbo, índio quer fazer fumaça\n\nNa delegacia só tinha viciado e delinquente\nCada um com um vício, um caso diferente\nUm cachaceiro esfaqueou o dono do bar porque ele não vendia pinga fiado\nE um senhor bebeu uísque demais, acordou com um travesti e assassinou o coitado\nUm viciado no jogo apostou a mulher, perdeu a aposta e ela foi sequestrada\n\nEra tanta ocorrência, tanta violência, que o índio não tava entendendo nada\nEle viu que o delegado fumava um charuto fedorento e acendeu um \"Da Paz\" pra relaxar\nMas quando foi dar um tapinha, levou um tapão violento e um chute naquele lugar\n\nFoi mandado pro presídio e no caminho assistiu um acidente provocado por excesso de cerveja:\nUma jovem que bebeu demais atropelou um padre e os noivos na porta da igreja\nE pro índio nada mais faz sentido\nCom tantas drogas porque só o seu cachimbo é proibido?\n\nMaresia, sente a maresia, maresia uuu...\nApaga fumaça do revólver, da pistola\nManda fumaça do cachimbo pra cachola\nAcende, puxa, prende, passa\nÍndio quer cachimbo, índio quer fazer fumaça\n\nNa penitenciaria o \"índio fora da lei\" conheceu os criminosos de verdade\nEntrando, saindo e voltando cada vez mais perigosos pra sociedade\n\nAí, cumpadí, tá rolando um sorteio na prisão\nPra reduzir a superlotação todo mês alguns presos tem que ser executados\nE o índio desta vez foi um dos sorteados e tentou acalmar os outros presos:\n\"Peraí, vâmo fuma um Cachimbinho da Paz\"...\nEles começaram a rir e espancaram o velho índio até não poder mais\n\nE antes de morrer ele pensou: \"essa tribo é atrasada demais. Eles querem acabar com a violência, Mas a paz é\ncontra lei e a lei é contra paz\"\n\nE o Cachimbo do índio continua proibido\nMas se você quer comprar é mais fácil que pão\nHoje em dia ele é vendido pelos mesmos bandidos que mataram o velho índio na prisão.\n\nMaresia, sente a maresia, maresia uuu...\nApaga fumaça do revólver, da pistola\nManda fumaça do cachimbo pra cachola\nAcende, puxa, prende, passa\nÍndio quer cachimbo, índio quer fazer fumaça"
+        },
+        {
+          "option": 1,
+          "agent": 4,
+          "agent_name": "RandomAgent_5",
+          "card_id": 106,
+          "title": "Tristeza do Jeca",
+          "artist": "Tonico e Tinoco",
+          "lyrics": "Nestes verso tão singelo\nMinha bela, meu amor\nPra você quero contar\nO meu sofrer e a minha dor\nEu sô que nem sabiá\nQuando canta é só tristeza\nDesde um galho onde ele está\nNesta viola eu canto e gemo de verdade\nCada toada representa uma saudade\nEu nasci naquela serra\nNum ranchinho beira chão\nTodo cheio de buraco\nOnde a lua faz clarão\nQuando chega a madrugada\nLá na mata a passarada\nPrincipía um barulhão\nNesta viola eu canto e gemo de verdade\nCada toada representa uma saudade\nVou parar cua minha viola já não posso mais cantar\nPois um jeca quando canta têm vontade de chorar\nO choro que vai caindo\nDevagar vai se sumindo\nComo as água vão pro mar"
+        },
+        {
+          "option": 2,
+          "agent": 3,
+          "agent_name": "RandomAgent_4",
+          "card_id": 86,
+          "title": "Apenas Um Rapaz Latino-americano",
+          "artist": "Belchior",
+          "lyrics": "Eu sou apenas um rapaz latino-americano\nSem dinheiro no banco,\nSem parentes importantes, e vindo do interior\n\nMas trago, de cabeça, uma canção do rádio\nEm que um antigo compositor baiano me dizia:\n\"tudo é divino, tudo é maravilhoso\"\n\nMas trago, de cabeça, uma canção do rádio\nEm que um antigo compositor baiano me dizia:\n\"tudo é divino, tudo é maravilhoso\"\n\nTenho ouvido muitos discos,\nConversado com pessoas, caminhado meu caminho\nPapo, som dentro da noite,\nE não tenho um amigo sequer\nE não acredite nisso, não.\nTudo muda e com toda razão!\n\nEu sou apenas um rapaz latino-americano\nSem dinheiro no banco,\nSem parentes importantes, e vindo do interior\n\nMas sei que tudo é proibido,\naliás, eu queria dizer\nQue tudo é permitido,\naté beijar você no escuro do cinema\nQuando ninguém nos vê\n\nMas sei que tudo é proibido,\naliás, eu queria dizer\nQue tudo é permitido,\naté beijar você no escuro do cinema\nQuando ninguém nos vê\n\nNão me peça que lhe faça uma canção como se deve\nCorreta, branca, suave, muito limpa, muito leve\nSons, palavras são navalhas\ne eu não posso cantar como convém\nSem querer ferir ninguém\n\nMas não se preocupe meu amigo\ncom os horrores que eu lhe digo\nIsso é somente uma canção,\nA vida, a vida realmente é diferente\nQuer dizer, ao vivo é muito pior!\n\nE eu sou apenas um rapaz latino-americano,\nsem dinheiro no banco\nPor favor não saque a arma no \"saloon\"\neu sou apenas o cantor\n\nMas se depois de cantar\nvocê ainda quiser me atirar\nMate-me logo, à tarde, às três,\nque à noite tenho um compromisso\nE não posso faltar, por causa de vocês\n\nMas se depois de cantar\nvocê ainda quiser me atirar\nMate-me logo, à tarde, às três,\nque à noite tenho um compromisso\nE não posso faltar, por causa de vocês\n\nEu sou apenas um rapaz latino-americano\nsem dinheiro no banco\nSem parentes importantes, e vindo do interior\n\nMas sei que nada é divino,\nnada, nada é maravilhoso\nNada, nada é secreto,\nnada, nada é misterioso, não\nNa na na na na na na na"
+        },
+        {
+          "option": 3,
+          "agent": 0,
+          "agent_name": "LLMAgent_1",
+          "card_id": 241,
+          "title": "Ouça",
+          "artist": "Maysa",
+          "lyrics": "Ouça, vá viver Sua vida com outro bem, Hoje eu já cansei De pra você não ser ninguém. O passado não foi o bastante pra lhe convencer Que o futuro seria bem grande só eu e você. Quando a lembrança com você for morar E bem baixinho de saudade você chorar, Vai lembrar que um dia existiu Um alguém que só carinho pediu E você fez questão de não dar, Fez questão de negar."
+        },
+        {
+          "option": 4,
+          "agent": 2,
+          "agent_name": "RandomAgent_3",
+          "card_id": 182,
+          "title": "Vou Deixar",
+          "artist": "Skank",
+          "lyrics": "Vou deixar a vida me levar\nPra onde ela quiser\nEstou no meu lugar\nVocê já sabe onde é\nÉ, não conte o tempo por nós dois\nPois, a qualquer hora posso estar de volta\nDepois que a noite terminar\nVou deixar a vida me levar\nPra onde ela quiser\nSeguir a direção\nDe uma estrela qualquer\nÉ, não quero hora pra voltar, não\nConheço bem a solidão, me solta\nE deixa a sorte me buscar\nEu já estou na sua estrada\nSozinho não enxergo nada\nMas vou ficar aqui\nAté que o dia amanheça\nVou esquecer de mim\nE você, se puder, não me esqueça\nVou deixar o coração bater\nNa madrugada sem fim\nDeixar o sol te ver\nAjoelhada por mim, sim\nNão tenho hora pra voltar, não\nEu agradeço tanto a sua escolta\nMas deixa a noite terminar\nEu já estou na sua estrada\nSozinho não enxergo nada\nMas vou ficar aqui\nAté que o dia amanheça\nVou esquecer de mim\nE você, se puder, não me esqueça\nNão, não, não quero hora pra voltar, não\nConheço bem a solidão, me solta\nE deixa a sorte me buscar\nNão, não, não tenho hora pra voltar, não\nEu agradeço tanto a sua escolta\nMas deixa a noite terminar"
+        },
+        {
+          "option": 5,
+          "agent": 1,
+          "agent_name": "RandomAgent_2",
+          "card_id": 71,
+          "title": "Caminhemos",
+          "artist": "Herivelto Martins",
+          "lyrics": "Não, eu não posso lembrar que te amei\nNão, eu preciso esquecer que sofri\nFaça de conta que o tempo passou\nE que tudo entre nós terminou\nE que a vida não continuou pra nós dois\nCaminhemos\nTalvez nos vejamos depois\nVida comprida\nEstrada alongada\nParto a procura de alguém\nOu a procura de nada\nVou indo, caminhando\nSem saber onde chegar\nQuem sabe na volta\nTe encontro no mesmo lugar?"
+        }
+      ],
+      "votes": [
+        [
+          4,
+          5
+        ],
+        [
+          4,
+          3
+        ],
+        [],
+        [
+          4,
+          3
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          5,
+          3
+        ]
+      ],
+      "votes_by_agent": [
+        {
+          "agent": 0,
+          "agent_name": "LLMAgent_1",
+          "own_option": 3,
+          "own_card_id": 241,
+          "voted_options": [
+            4,
+            5
+          ],
+          "voted_agents": [
+            2,
+            1
+          ]
+        },
+        {
+          "agent": 1,
+          "agent_name": "RandomAgent_2",
+          "own_option": 5,
+          "own_card_id": 71,
+          "voted_options": [
+            4,
+            3
+          ],
+          "voted_agents": [
+            2,
+            0
+          ]
+        },
+        {
+          "agent": 2,
+          "agent_name": "RandomAgent_3",
+          "own_option": 4,
+          "own_card_id": 182,
+          "voted_options": [],
+          "voted_agents": []
+        },
+        {
+          "agent": 3,
+          "agent_name": "RandomAgent_4",
+          "own_option": 2,
+          "own_card_id": 86,
+          "voted_options": [
+            4,
+            3
+          ],
+          "voted_agents": [
+            2,
+            0
+          ]
+        },
+        {
+          "agent": 4,
+          "agent_name": "RandomAgent_5",
+          "own_option": 1,
+          "own_card_id": 106,
+          "voted_options": [
+            0,
+            2
+          ],
+          "voted_agents": [
+            5,
+            3
+          ]
+        },
+        {
+          "agent": 5,
+          "agent_name": "RandomAgent_6",
+          "own_option": 0,
+          "own_card_id": 40,
+          "voted_options": [
+            5,
+            3
+          ],
+          "voted_agents": [
+            1,
+            0
+          ]
+        }
+      ],
+      "received_votes": [
+        1,
+        0,
+        1,
+        3,
+        3,
+        2
+      ],
+      "received_votes_by_agent": {
+        "5": 1,
+        "4": 0,
+        "3": 1,
+        "0": 3,
+        "2": 3,
+        "1": 2
+      },
+      "scores": [
+        6,
+        5,
+        3,
+        4,
+        0,
+        1
+      ],
+      "cumulative_scores": [
+        15,
+        10,
+        5,
+        10,
+        7,
+        6
+      ],
+      "drawn_cards": [
+        {
+          "agent": 2,
+          "agent_name": "RandomAgent_3",
+          "card_id": 15,
+          "title": "Sinal Fechado"
+        },
+        {
+          "agent": 0,
+          "agent_name": "LLMAgent_1",
+          "card_id": 53,
+          "title": "Disritmia"
+        },
+        {
+          "agent": 1,
+          "agent_name": "RandomAgent_2",
+          "card_id": 163,
+          "title": "A Lua e Eu"
+        },
+        {
+          "agent": 3,
+          "agent_name": "RandomAgent_4",
+          "card_id": 123,
+          "title": "Beija Eu"
+        },
+        {
+          "agent": 4,
+          "agent_name": "RandomAgent_5",
+          "card_id": 46,
+          "title": "A Estrada"
+        },
+        {
+          "agent": 5,
+          "agent_name": "RandomAgent_6",
+          "card_id": 218,
+          "title": "Ai Se Eu Te Pego"
+        }
+      ]
+    },
+    {
+      "round": 4,
+      "narrador": 3,
+      "narrador_option": 1,
+      "clue": "não andei pelos quatro cantos mundo",
+      "played_cards": [
+        {
+          "option": 0,
+          "agent": 5,
+          "agent_name": "RandomAgent_6",
+          "card_id": 51,
+          "title": "Como Eu Quero",
+          "artist": "Kid Abelha",
+          "lyrics": "Diz pra eu ficar muda faz cara de mistério\nTira essa bermuda que eu quero você sério\nTramas do sucesso mundo particular\nSolos de guitarra não vão me conquistar\nRefrão:\nUuuuu! Eu quero você como eu quero (Bis)\nO que você precisa é de um retoque total\nVou transformar o seu rascunho em arte final\nAgora não tem jeito \"cê\" tá numa cilada\nÉ cada um por si você por mim e mais nada\nRefrão:\nUuuuu! Eu quero você como eu quero (Bis)\nLonge do meu domínio \"cê\" vai de mal a pior\nVem que eu te ensino como ser bem melhor (Bis)\nRefrão:\nUuuuu! Eu quero você como eu quero (Bis)"
+        },
+        {
+          "option": 1,
+          "agent": 3,
+          "agent_name": "RandomAgent_4",
+          "card_id": 157,
+          "title": "Gita",
+          "artist": "Raul Seixas",
+          "lyrics": "\"Eu que já andei pelos quatro cantos do mundo procurando,\nfoi justamente num sonho que Ele me falou\"\nÀs vezes você me pergunta\nPor que é que eu sou tão calado\nNão falo de amor quase nada\nNem fico sorrindo ao teu lado\nVocê pensa em mim toda hora\nMe come, me cospe, me deixa\nTalvez você não entenda\nMas hoje eu vou lhe mostrar\nEu sou a luz das estrelas\nEu sou a cor do luar\nEu sou as coisas da vida\nEu sou o medo de amar\nEu sou o medo do fraco\nA força da imaginação\nO blefe do jogador\nEu sou, eu fui, eu vou\nGita gita gita gita gita\nEu sou o seu sacrifício\nA placa de contra-mão\nO sangue no olhar do vampiro\nE as juras de maldição\nEu sou a vela que acende\nEu sou a luz que se apaga\nEu sou a beira do abismo\nEu sou o tudo e o nada\nPor que você me pergunta\nPerguntas não vão lhe mostrar\nQue eu sou feito da terra\nDo fogo, da água e do ar\nVocê me tem todo dia\nMas não sabe se é bom ou ruim\nMas saiba que eu estou em você\nMas você não está em mim\nDas telhas eu sou o telhado\nA pesca do pescador\nA letra A tem meu nome\nDos sonhos eu sou o amor\nEu sou a dona de casa\nNos pegue-pagues do mundo\nEu sou a mão do carrasco\nSou raso, largo, profundo\nGita gita gita gita gita\nEu sou a mosca da sopa\nE o dente do tubarão\nEu sou os olhos do cego\nE a cegueira da visão\nMas eu sou o amargo da língua\nA mãe, o pai e o avô\nO filho que ainda não veio\nO início, o fim e o meio (2x)\nEu sou o início, o fim e o meio (3x)"
+        },
+        {
+          "option": 2,
+          "agent": 4,
+          "agent_name": "RandomAgent_5",
+          "card_id": 58,
+          "title": "O Mar",
+          "artist": "Dorival Caymmi",
+          "lyrics": "O mar quando quebra na praia\nÉ bonito, é bonito\nO mar... pescador quando sai\nNunca sabe se volta, nem sabe se fica\nQuanta gente perdeu seus maridos seus filhos\nNas ondas do mar\nO mar quando quebra na praia\nÉ bonito, é bonito\nPedro vivia da pesca\nSaia no barco\nSeis horas da tarde\nSó vinha na hora do sol raiá\nTodos gostavam de Pedro\nE mais do que todas\nRosinha de Chica\nA mais bonitinha\nE mais bem feitinha\nDe todas as mocinha lá do arraiá\nPedro saiu no seu barco\nSeis horas da tarde\nPassou toda a noite\nNão veio na hora do sol raiá\nDeram com o corpo de Pedro\nJogado na praia\nRoído de peixe\nSem barco sem nada\nNum canto bem longe lá do arraiá\nPobre Rosinha de Chica\nQue era bonita\nAgora parece\nQue endoideceu\nVive na beira da praia\nOlhando pras ondas\nAndando rondando\nDizendo baixinho\nMorreu, morreu, morreu, oh...\nO mar quando quebra na praia"
+        },
+        {
+          "option": 3,
+          "agent": 0,
+          "agent_name": "LLMAgent_1",
+          "card_id": 53,
+          "title": "Disritmia",
+          "artist": "Martinho da Vila",
+          "lyrics": "Disritmia\nEu quero me esconder de baixo\nDessa sua saia\nPra fugir do mundo\nPretendo também me embrenhar no emaranhado desses seus cabelos,\nPreciso transfundir seu sangue pro meu coração que é tão vagabundo,\nMe deixe te trazer num dengo pra num cafuné fazer os meus apelos,\nEu quero ser exorcizado pela água benta desse olhar infindo\nQue bom ser fotografado mas pelas retinas desses olhos lindos\nMe deixe hipnotizado pra acabar de vez com essa disritmia\nVem logo vem curar seu negro que chegou de porre lá da boemia\nVem logo vem curar seu negro que chegou de porre lá da boemia."
+        },
+        {
+          "option": 4,
+          "agent": 2,
+          "agent_name": "RandomAgent_3",
+          "card_id": 15,
+          "title": "Sinal Fechado",
+          "artist": "Chico Buarque",
+          "lyrics": "– Olá! Como vai?\n– Eu vou indo. E você, tudo bem?\n– Tudo bem! Eu vou indo, correndo pegar meu lugar no futuro... E\nvocê?\n– Tudo bem! Eu vou indo, em busca de um sono tranqüilo...\nQuem sabe?\n– Quanto tempo!\n– Pois é, quanto tempo!\n– Me perdoe a pressa - é a alma dos nossos negócios!\n– Qual, não tem de quê! Eu também só ando a cem!\n– Quando é que você telefona? Precisamos nos ver por aí!\n– Pra semana, prometo, talvez nos vejamos...Quem sabe?\n– Quanto tempo!\n– Pois é...quanto tempo!\n– Tanta coisa que eu tinha a dizer, mas eu sumi na poeira das\nruas...\n– Eu também tenho algo a dizer, mas me foge à lembrança!\n– Por favor, telefone - Eu preciso beber alguma coisa,\nrapidamente...\n– Pra semana...\n– O sinal...\n– Eu procuro você...\n– Vai abrir, vai abrir...\n– Eu prometo, não esqueço, não esqueço...\n– Por favor, não esqueça, não esqueça...\n– Adeus! Não esqueço..\n– Adeus!\n– Adeus!"
+        },
+        {
+          "option": 5,
+          "agent": 1,
+          "agent_name": "RandomAgent_2",
+          "card_id": 67,
+          "title": "O Canto da Cidade",
+          "artist": "Daniela Mercury",
+          "lyrics": "A cor dessa cidade sou eu O canto dessa cidade é meu A cor dessa cidade sou eu O canto dessa cidade é meu O gueto, a rua, a fé Eu vou andando a pé pela cidade bonita O toque do afoxé e a força de onde vem Ninguém explica, ela é bonita O gueto, a rua, a fé Eu vou andando a pé pela cidade bonita O toque do afoxé e a força de onde vem Ninguém explica, ela é bonita Uô ô verdadeiro amor Uô ô você vai onde eu vou Uô ô verdadeiro amor Uô ô você vai onde eu vou Não diga que não me quer Não diga que não quer mais Eu sou o silêncio da noite O sol da manhã Mil voltas o mundo tem Mas tem um ponto final Eu sou o primeiro que canta Eu sou o carnaval A cor dessa cidade sou eu O canto dessa cidade é meu A cor dessa cidade sou eu O canto dessa cidade é meu Não diga que não me quer Não diga que não quer mais Eu sou o silêncio da noite O sol da manhã Mil voltas o mundo tem Mas tem um ponto final Eu sou o primeiro que canta Eu sou o carnaval Uô ô verdadeiro amor Uô ô você vai onde eu vou Uô ô verdadeiro amor Uô ô você vai onde eu vou A cor dessa cidade sou eu O canto dessa cidade é meu A cor dessa cidade sou eu O canto dessa cidade é meu"
+        }
+      ],
+      "votes": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [],
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "votes_by_agent": [
+        {
+          "agent": 0,
+          "agent_name": "LLMAgent_1",
+          "own_option": 3,
+          "own_card_id": 53,
+          "voted_options": [
+            1,
+            0
+          ],
+          "voted_agents": [
+            3,
+            5
+          ]
+        },
+        {
+          "agent": 1,
+          "agent_name": "RandomAgent_2",
+          "own_option": 5,
+          "own_card_id": 67,
+          "voted_options": [
+            0,
+            1
+          ],
+          "voted_agents": [
+            5,
+            3
+          ]
+        },
+        {
+          "agent": 2,
+          "agent_name": "RandomAgent_3",
+          "own_option": 4,
+          "own_card_id": 15,
+          "voted_options": [
+            3,
+            1
+          ],
+          "voted_agents": [
+            0,
+            3
+          ]
+        },
+        {
+          "agent": 3,
+          "agent_name": "RandomAgent_4",
+          "own_option": 1,
+          "own_card_id": 157,
+          "voted_options": [],
+          "voted_agents": []
+        },
+        {
+          "agent": 4,
+          "agent_name": "RandomAgent_5",
+          "own_option": 2,
+          "own_card_id": 58,
+          "voted_options": [
+            3,
+            0
+          ],
+          "voted_agents": [
+            0,
+            5
+          ]
+        },
+        {
+          "agent": 5,
+          "agent_name": "RandomAgent_6",
+          "own_option": 0,
+          "own_card_id": 51,
+          "voted_options": [
+            3,
+            4
+          ],
+          "voted_agents": [
+            0,
+            2
+          ]
+        }
+      ],
+      "received_votes": [
+        3,
+        3,
+        0,
+        3,
+        1,
+        0
+      ],
+      "received_votes_by_agent": {
+        "5": 3,
+        "3": 3,
+        "4": 0,
+        "0": 3,
+        "2": 1,
+        "1": 0
+      },
+      "scores": [
+        6,
+        3,
+        4,
+        3,
+        0,
+        3
+      ],
+      "cumulative_scores": [
+        21,
+        13,
+        9,
+        13,
+        7,
+        9
+      ],
+      "drawn_cards": [
+        {
+          "agent": 3,
+          "agent_name": "RandomAgent_4",
+          "card_id": 149,
+          "title": "Na Baixa do Sapateiro"
+        },
+        {
+          "agent": 0,
+          "agent_name": "LLMAgent_1",
+          "card_id": 36,
+          "title": "Admirável Gado Novo"
+        },
+        {
+          "agent": 1,
+          "agent_name": "RandomAgent_2",
+          "card_id": 224,
+          "title": "Fátima"
+        },
+        {
+          "agent": 2,
+          "agent_name": "RandomAgent_3",
+          "card_id": 240,
+          "title": "Swing da Cor"
+        },
+        {
+          "agent": 4,
+          "agent_name": "RandomAgent_5",
+          "card_id": 179,
+          "title": "Amor I Love You"
+        },
+        {
+          "agent": 5,
+          "agent_name": "RandomAgent_6",
+          "card_id": 253,
+          "title": "Alvorada Voraz"
+        }
+      ]
+    },
+    {
+      "round": 5,
+      "narrador": 4,
+      "narrador_option": 0,
+      "clue": "não gente realce pode força sente",
+      "played_cards": [
+        {
+          "option": 0,
+          "agent": 4,
+          "agent_name": "RandomAgent_5",
+          "card_id": 79,
+          "title": "Realce",
+          "artist": "Gilberto Gil",
+          "lyrics": "Não se incomode\nO que a gente pode, pode\nO que a gente não pode, explodirá\nA força é bruta\nE a fonte da força é neutra\nE de repente a gente poderá\nRealce, realce\nQuanto mais purpurina, melhor\nRealce, realce\nCom a cor do veludo\nCom amor, com tudo\nDe real teor de beleza\nNão se impaciente\nO que a gente sente, sente\nAinda que não se tente, afetará\nO afeto é fogo\nE o modo do fogo é quente\nE de repente a gente queimará\nRealce, realce\nQuanto mais parafina, melhor\nRealce, realce\nCom a cor do veludo\nCom amor, com tudo\nDe real teor de beleza\nNão desespere\nQuando a vida fere, fere\nE nenhum mágico interferirá\nSe a vida fere\nComo a sensação do brilho\nDe repente a gente brilhará\nRealce, realce\nQuanto mais serpentina, melhor\nRealce, realce\nCom a cor do veludo\nCom amor, com tudo\nDe real teor de beleza"
+        },
+        {
+          "option": 1,
+          "agent": 0,
+          "agent_name": "LLMAgent_1",
+          "card_id": 69,
+          "title": "Balancê",
+          "artist": "Gal Costa",
+          "lyrics": "Ô balancê balancê\nQuero dançar com você\nEntra na roda morena pra ver\nÔ balancê balancê\nQuando por mim você passa\nFingindo que não me vê\nMeu coração quase se despedaça\nNo balancê balancê\nRefrão\nVocê foi minha cartilha\nVocê foi meu abc\nE por isso eu sou a maior maravilha\nNo balancê balancê\nRefrão\nEu levo a vida pensando\nPensando só em você\nE o tempo passa e eu vou me acabando\nNo balancê balancê"
+        },
+        {
+          "option": 2,
+          "agent": 5,
+          "agent_name": "RandomAgent_6",
+          "card_id": 218,
+          "title": "Ai Se Eu Te Pego",
+          "artist": "Michel Teló",
+          "lyrics": "Nossa, nossa Assim você me mata Ai, se eu te pego, Ai, ai, se eu te pego Delícia, delícia Assim você me mata Ai, se eu te pego Ai, ai, se eu te pego Sábado na balada A galera começou a dançar E passou a menina mais linda Tomei coragem e comecei a falar Nossa, nossa Assim você me mata Ai, se eu te pego Ai, ai se eu te pego Delícia, delicia Assim você me mata Ai, se eu te pego Ai, ai, se eu te pego"
+        },
+        {
+          "option": 3,
+          "agent": 1,
+          "agent_name": "RandomAgent_2",
+          "card_id": 28,
+          "title": "Apesar de Você",
+          "artist": "Chico Buarque",
+          "lyrics": "Hoje você é quem manda\nFalou, tá falado\nNão tem discussão\nA minha gente hoje anda\nFalando de lado\nE olhando pro chão, viu\nVocê que inventou esse estado\nE inventou de inventar\nToda a escuridão\nVocê que inventou o pecado\nEsqueceu-se de inventar\nO perdão\nApesar de você\nAmanhã há de ser\nOutro dia\nEu pergunto a você\nOnde vai se esconder\nDa enorme euforia\nComo vai proibir\nQuando o galo insistir\nEm cantar\nÁgua nova brotando\nE a gente se amando\nSem parar\nQuando chegar o momento\nEsse meu sofrimento\nVou cobrar com juros, juro\nTodo esse amor reprimido\nEsse grito contido\nEste samba no escuro\nVocê que inventou a tristeza\nOra, tenha a fineza\nDe desinventar\nVocê vai pagar e é dobrado\nCada lágrima rolada\nNesse meu penar\nApesar de você\nAmanhã há de ser\nOutro dia\nInda pago pra ver\nO jardim florescer\nQual você não queria\nVocê vai se amargar\nVendo o dia raiar\nSem lhe pedir licença\nE eu vou morrer de rir\nQue esse dia há de vir\nAntes do que você pensa\nApesar de você\nAmanhã há de ser\nOutro dia\nVocê vai ter que ver\nA manhã renascer\nE esbanjar poesia\nComo vai se explicar\nVendo o céu clarear\nDe repente, impunemente\nComo vai abafar\nNosso coro a cantar\nNa sua frente\nApesar de você\nAmanhã há de ser\nOutro dia\nVocê vai se dar mal\nEtc. e tal\n1970 © by Cara Nova Editora Musical Ltda."
+        },
+        {
+          "option": 4,
+          "agent": 3,
+          "agent_name": "RandomAgent_4",
+          "card_id": 149,
+          "title": "Na Baixa do Sapateiro",
+          "artist": "Ary Barroso",
+          "lyrics": "Na Baixa do Sapateiro eu encontreu um dia\nA morena mais frajola da Bahia\nPedi-lhe um beijo, não deu\nUm abraço, sorriu\nPedi-lhe a mão, não quis dar, fugiu\nBahia, terra da felicidade\nMorena, eu ando louco de saudade\nMeu Senhor do Bonfim\nArranje outra morena igualzinha pra mim\nOh! amor, ai\nAmor bobagem que a gente não explica, ai, ai\nProva um bocadinho, ô\nFica envenenado, ô\nE pro resto da vida é um tal de sofrer\nÔlará, ôleré\nÔ Bahia\nBahia que não me sai do pensamento\nFaço o meu lamento, ô\nNa desesperança, ô\nDe encontrar nesse mundo\nUm amor que eu perdi na Bahia, vou contar\nÔ Bahia\nBahia que não me sai do pensamento...\nSir.Led -> Regina Célia"
+        },
+        {
+          "option": 5,
+          "agent": 2,
+          "agent_name": "RandomAgent_3",
+          "card_id": 20,
+          "title": "Como Nossos Pais",
+          "artist": "Elis Regina",
+          "lyrics": "Não quero lhe falar meu grande amor Das coisas que aprendi nos discos Quero lhe contar como eu vivi E tudo o que aconteceu comigo Viver é melhor que sonhar Eu sei que o amor é uma coisa boa Mas também sei Que qualquer canto é menor do que a vida De qualquer pessoa Por isso cuidado meu bem Há perigo na esquina Eles venceram e o sinal Está fechado pra nós Que somos jovens... Para abraçar seu irmão E beijar sua menina, na lua É que se fez o seu braço, O seu lábio e a sua voz... Você me pergunta pela minha paixão Digo que estou encantada como uma nova invenção Eu vou ficar nesta cidade não vou voltar pro sertão Pois vejo vir vindo no vento cheiro da nova estação Eu sei de tudo na ferida viva do meu coração... Já faz tempo eu vi você na rua Cabelo ao vento, gente jovem reunida Na parede da memória essa lembrança É o quadro que dói mais... Minha dor é perceber Que apesar de termos feito tudo o que fizemos Ainda somos os mesmos e vivemos Ainda somos os mesmos e vivemos Como os nossos pais... Nossos ídolos ainda são os mesmos E as aparências não enganam não Você diz que depois deles não apareceu mais ninguém Você pode até dizer que eu tô por fora Ou então que eu tô inventando... Mas é você que ama o passado e que não vê É você que ama o passado e que não vê Que o novo sempre vem... Hoje eu sei que quem me deu a ideia De uma nova consciência e juventude Tá em casa, guardado por Deus Contando vil metal... Minha dor é perceber que apesar de termos Feito tudo, tudo, tudo o que fizemos Nós ainda somos os mesmos e vivemos Ainda somos os mesmos e vivemos Ainda somos os mesmos e vivemos Como os nossos pais..."
+        }
+      ],
+      "votes": [
+        [
+          0,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          0,
+          3
+        ],
+        [],
+        [
+          4,
+          5
+        ]
+      ],
+      "votes_by_agent": [
+        {
+          "agent": 0,
+          "agent_name": "LLMAgent_1",
+          "own_option": 1,
+          "own_card_id": 69,
+          "voted_options": [
+            0,
+            3
+          ],
+          "voted_agents": [
+            4,
+            1
+          ]
+        },
+        {
+          "agent": 1,
+          "agent_name": "RandomAgent_2",
+          "own_option": 3,
+          "own_card_id": 28,
+          "voted_options": [
+            2,
+            4
+          ],
+          "voted_agents": [
+            5,
+            3
+          ]
+        },
+        {
+          "agent": 2,
+          "agent_name": "RandomAgent_3",
+          "own_option": 5,
+          "own_card_id": 20,
+          "voted_options": [
+            4,
+            0
+          ],
+          "voted_agents": [
+            3,
+            4
+          ]
+        },
+        {
+          "agent": 3,
+          "agent_name": "RandomAgent_4",
+          "own_option": 4,
+          "own_card_id": 149,
+          "voted_options": [
+            0,
+            3
+          ],
+          "voted_agents": [
+            4,
+            1
+          ]
+        },
+        {
+          "agent": 4,
+          "agent_name": "RandomAgent_5",
+          "own_option": 0,
+          "own_card_id": 79,
+          "voted_options": [],
+          "voted_agents": []
+        },
+        {
+          "agent": 5,
+          "agent_name": "RandomAgent_6",
+          "own_option": 2,
+          "own_card_id": 218,
+          "voted_options": [
+            4,
+            5
+          ],
+          "voted_agents": [
+            3,
+            2
+          ]
+        }
+      ],
+      "received_votes": [
+        3,
+        0,
+        1,
+        2,
+        3,
+        1
+      ],
+      "received_votes_by_agent": {
+        "4": 3,
+        "0": 0,
+        "5": 1,
+        "1": 2,
+        "3": 3,
+        "2": 1
+      },
+      "scores": [
+        3,
+        2,
+        4,
+        6,
+        3,
+        1
+      ],
+      "cumulative_scores": [
+        24,
+        15,
+        13,
+        19,
+        10,
+        10
+      ],
+      "drawn_cards": [
+        {
+          "agent": 4,
+          "agent_name": "RandomAgent_5",
+          "card_id": 142,
+          "title": "Coração Selvagem"
+        },
+        {
+          "agent": 0,
+          "agent_name": "LLMAgent_1",
+          "card_id": 193,
+          "title": "Sufoco"
+        },
+        {
+          "agent": 1,
+          "agent_name": "RandomAgent_2",
+          "card_id": 124,
+          "title": "Lança Perfume"
+        },
+        {
+          "agent": 2,
+          "agent_name": "RandomAgent_3",
+          "card_id": 146,
+          "title": "Você"
+        },
+        {
+          "agent": 3,
+          "agent_name": "RandomAgent_4",
+          "card_id": 11,
+          "title": "Roda Viva"
+        },
+        {
+          "agent": 5,
+          "agent_name": "RandomAgent_6",
+          "card_id": 94,
+          "title": "Será"
+        }
+      ]
+    },
+    {
+      "round": 6,
+      "narrador": 5,
+      "narrador_option": 3,
+      "clue": "será não vai isso tire suas",
+      "played_cards": [
+        {
+          "option": 0,
+          "agent": 3,
+          "agent_name": "RandomAgent_4",
+          "card_id": 95,
+          "title": "Juventude Transviada",
+          "artist": "Luiz Melodia",
+          "lyrics": "Lava roupa todo dia, que agonia\nNa quebrada da soleira, que chovia\nAté sonhar de madrugada, uma moça sem mancada\nUma mulher não deve vacilar\nEu entendo a juventude transviada\nE o auxílio luxuoso de um pandeiro\nAté sonhar de madrugada, uma moça sem mancada\nUma mulher não deve vacilar\nCada cara representa uma mentira\nNascimento, vida e morte, quem diria\nAté sonhar de madrugada, uma moça sem mancada\nUma mulher não deve vacilar\nHoje pode transformar\nE o que diria a juventude\nUm dia você vai chorar\nVejo claras fantasias"
+        },
+        {
+          "option": 1,
+          "agent": 1,
+          "agent_name": "RandomAgent_2",
+          "card_id": 163,
+          "title": "A Lua e Eu",
+          "artist": "Cassiano",
+          "lyrics": "Mais um ano se passou\nE nem sequer ouvi falar seu nome, a lua e eu\nCaminhando pela estrada\nEu olho em volta e só vejo pegadas\nMas não são as suas, eu sei, eu sei, eu sei\nO vento faz eu lembrar vo ... cê\nAs folhas caem mortas como eu\nQuando olho no espelho\nEstou ficando velho e acabado\nProcuro encontrar não sei onde está\nvocê ,você,você."
+        },
+        {
+          "option": 2,
+          "agent": 2,
+          "agent_name": "RandomAgent_3",
+          "card_id": 146,
+          "title": "Você",
+          "artist": "Tim Maia",
+          "lyrics": "De repente a dor\nDe esperar terminou\nE o amor veio enfim\nEu que sempre sonhei\nMas não acreditei\nMuito em mim\nVi o tempo passar\nO inverno chegar\nOutra vez mas desta vez\nTodo pranto sumiu\nUm encanto surgiu\nMeu amor\nVocê\nÉ mais do que sei\nÉ mais que pensei\nÉ mais que esperava, baby\nVocê\nÉ algo assim\nÉ tudo pra mim\nÉ como eu sonhava, baby\nSou feliz agora\nNão não vá embora não\nNão não não não não\nNão não vá embora\nNão não vá embora\nNão não vá embora\nNão não vá embora\nVou morrer de saudade\nVou morrer de saudade\nVou morrer de saudade\nNão vá embora\nNão vá embora\nNão vá embora\nVou morrer de saudade\nVou morrer de saudade\nNão vá embora\nNão vá, não vá\nVou morrer de saudade\nVou morrer de saudade"
+        },
+        {
+          "option": 3,
+          "agent": 5,
+          "agent_name": "RandomAgent_6",
+          "card_id": 94,
+          "title": "Será",
+          "artist": "Legião Urbana",
+          "lyrics": "Tire suas mãos de mim Eu não pertenço a você Não é me dominando assim Que você vai me entender Eu posso estar sozinho, Mas eu sei muito bem aonde estou Você pode até duvidar Acho que isso não é amor Será só imaginação? Será que nada vai acontecer? Será que é tudo isso em vão? Será que vamos conseguir vencer? Nos perderemos entre monstros Da nossa própria criação Serão noites inteiras Talvez por medo da escuridão Ficaremos acordados Imaginando alguma solução Pra que esse nosso egoísmo Não destrua nosso coração Será só imaginação? Será que nada vai acontecer? Será que é tudo isso em vão? Será que vamos conseguir vencer? Brigar pra quê se é sem querer? Quem é que vai nos proteger? Será que vamos ter que responder Pelos erros a mais, eu e você?"
+        },
+        {
+          "option": 4,
+          "agent": 0,
+          "agent_name": "LLMAgent_1",
+          "card_id": 193,
+          "title": "Sufoco",
+          "artist": "Alcione",
+          "lyrics": "Não sei se vou aturar\nEsses seus abusos\nNão sei se vou suportar\nOs seus absurdos\nVocê vai embora\nPor ai afora\nDistribuindo sonhos\nOs carinhos que você me prometeu\nVocê me desama\nE depois reclama\nQuando os seus desejos\nJá bem cansados\nDesagradam os meus\nNão posso mais alimentar\nA esse amor tão louco\nQue sufoco\nEu sei que tenho mil razões até\nPara deixar de lhe amar\nNão, mas eu não quero\nagir assim, meu louco amor\nEu tenho mil razões\nPra lhe perdoar\nPor amar\nQue sufoco...\nNão, mas eu não quero\nAgir assim, meu louco amor\nEu tenho mil razões\nPara lhe perdoar\nPor amar"
+        },
+        {
+          "option": 5,
+          "agent": 4,
+          "agent_name": "RandomAgent_5",
+          "card_id": 46,
+          "title": "A Estrada",
+          "artist": "Cidade Negra",
+          "lyrics": "Você não sabe o quanto eu caminhei\nPra chegar até aqui\nPercorri milhas e milhas antes de dormir\nEu não cochilei\nOs mais belos montes escalei\nNas noites escuras de frio chorei, ei, ei\nEi ei ei... uu\n\nA vida ensina e o tempo traz o tom\nPra nascer uma canção\n\nCom a fé no dia-a-dia\nEncontro a solução\nEncontro a solução\n\nQuando bate a saudade\nEu vou pro mar\nFecho os meus olhos\nE sinto você chegar, você\nChegar\n\nPsicon, psicon, psicon\n\nQuero acordar de manhã do seu lado\nE aturar qualquer babado\nVou ficar apaixonado\nNo teu seio aconchegado\nE ver você dormindo e sorrindo\nÉ tudo que eu quero pra mim\nTudo que eu quero pra mim\n\nQuero acordar de manhã do seu lado\nE aturar qualquer babado\nVou ficar apaixonado\nNo teu seio aconchegado\nE ver você dormindo é tão lindo\nÉ tudo que eu quero pra mim\nTudo que eu quero pra mim\n\nVocê não sabe o quanto eu caminhei\nPra chegar até aqui\nPercorri milhas e milhas antes de dormir\nEu não cochilei\nOs mais belos montes escalei\nNas noites escuras de frio chorei, ei, ei\nEi ei ei\n\nTogether\nTogether\n\nMeu caminho só meu pai pode mudar\nMeu caminho só meu pai\nMeu caminho\n\nTogether\nTogether\n\nMeu caminho só meu pai pode mudar\nMeu caminho só meu pai\nMeu caminho\n\nTogether\nTogether\nTogether"
+        }
+      ],
+      "votes": [
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          0,
+          3
+        ],
+        []
+      ],
+      "votes_by_agent": [
+        {
+          "agent": 0,
+          "agent_name": "LLMAgent_1",
+          "own_option": 4,
+          "own_card_id": 193,
+          "voted_options": [
+            3,
+            0
+          ],
+          "voted_agents": [
+            5,
+            3
+          ]
+        },
+        {
+          "agent": 1,
+          "agent_name": "RandomAgent_2",
+          "own_option": 1,
+          "own_card_id": 163,
+          "voted_options": [
+            4,
+            5
+          ],
+          "voted_agents": [
+            0,
+            4
+          ]
+        },
+        {
+          "agent": 2,
+          "agent_name": "RandomAgent_3",
+          "own_option": 2,
+          "own_card_id": 146,
+          "voted_options": [
+            0,
+            3
+          ],
+          "voted_agents": [
+            3,
+            5
+          ]
+        },
+        {
+          "agent": 3,
+          "agent_name": "RandomAgent_4",
+          "own_option": 0,
+          "own_card_id": 95,
+          "voted_options": [
+            5,
+            3
+          ],
+          "voted_agents": [
+            4,
+            5
+          ]
+        },
+        {
+          "agent": 4,
+          "agent_name": "RandomAgent_5",
+          "own_option": 5,
+          "own_card_id": 46,
+          "voted_options": [
+            0,
+            3
+          ],
+          "voted_agents": [
+            3,
+            5
+          ]
+        },
+        {
+          "agent": 5,
+          "agent_name": "RandomAgent_6",
+          "own_option": 3,
+          "own_card_id": 94,
+          "voted_options": [],
+          "voted_agents": []
+        }
+      ],
+      "received_votes": [
+        3,
+        0,
+        0,
+        4,
+        1,
+        2
+      ],
+      "received_votes_by_agent": {
+        "3": 3,
+        "1": 0,
+        "2": 0,
+        "5": 4,
+        "0": 1,
+        "4": 2
+      },
+      "scores": [
+        4,
+        0,
+        3,
+        6,
+        5,
+        3
+      ],
+      "cumulative_scores": [
+        28,
+        15,
+        16,
+        25,
+        15,
+        13
+      ],
+      "drawn_cards": [
+        {
+          "agent": 5,
+          "agent_name": "RandomAgent_6",
+          "card_id": 169,
+          "title": "Malemolência"
+        },
+        {
+          "agent": 0,
+          "agent_name": "LLMAgent_1",
+          "card_id": 164,
+          "title": "Terra de Gigantes"
+        },
+        {
+          "agent": 1,
+          "agent_name": "RandomAgent_2",
+          "card_id": 16,
+          "title": "Tropicália"
+        },
+        {
+          "agent": 2,
+          "agent_name": "RandomAgent_3",
+          "card_id": 72,
+          "title": "Apenas Mais Uma de Amor"
+        },
+        {
+          "agent": 3,
+          "agent_name": "RandomAgent_4",
+          "card_id": 155,
+          "title": "Samba de Verão"
+        },
+        {
+          "agent": 4,
+          "agent_name": "RandomAgent_5",
+          "card_id": 125,
+          "title": "Além do Horizonte"
+        }
+      ]
+    },
+    {
+      "round": 7,
+      "narrador": 0,
+      "narrador_option": 5,
+      "clue": "memória tempo cidade",
+      "played_cards": [
+        {
+          "option": 0,
+          "agent": 1,
+          "agent_name": "RandomAgent_2",
+          "card_id": 16,
+          "title": "Tropicália",
+          "artist": "Caetano Veloso",
+          "lyrics": "Quando Pero Vaz Caminha Descobriu que as terras brasileiras Eram férteis e verdejantes Escreveu uma carta ao rei Tudo que nela se planta Tudo cresce e floresce E o Gauss da época gravou Sobre a cabeça, os aviões Sob os meus pés, os caminhões Aponta contra os chapadões Meu nariz Eu organizo o movimento Eu oriento o Carnaval Eu inauguro o monumento No Planalto Central do país Viva a Bossa, sa, sa Viva a Palhoça, ça, ça, ça, ça Viva a Bossa, sa, sa Viva a Palhoça, ça, ça, ça, ça O monumento É de papel crepom e prata Os olhos verdes da mulata A cabeleira esconde Atrás da verde mata O luar do sertão O monumento não tem porta A entrada é uma rua antiga Estreita e torta E no joelho uma criança Sorridente, feia e morta Estende a mão Viva a mata, tá, tá Viva a mulata, tá, tá, tá, tá Viva a mata, tá, tá Viva a mulata, tá, tá, tá, tá No pátio interno há uma piscina Com água azul de Amaralina Coqueiro, brisa e fala nordestina E faróis Na mão direita tem uma roseira Autenticando eterna primavera E no jardim os urubus passeiam A tarde inteira entre os girassóis Viva Maria, ia, ia Viva a Bahia, ia, ia, ia, ia Viva Maria, ia, ia Viva a Bahia, ia, ia, ia, ia No pulso esquerdo o bang-bang Em suas veias corre Muito pouco sangue Mas seu coração Balança um samba de tamborim Emite acordes dissonantes Pelos cinco mil alto-falantes Senhoras e senhores Ele põe os olhos grandes Sobre mim Viva Iracema, ma, ma Viva Ipanema, ma, ma, ma, ma Viva Iracema, ma, ma Viva Ipanema, ma, ma, ma, ma Domingo é o fino-da-bossa Segunda-feira está na fossa Terça-feira vai à roça Porém O monumento é bem moderno Não disse nada do modelo Do meu terno Que tudo mais vá pro inferno, meu bem Que tudo mais vá pro inferno, meu bem Viva a banda, da, da Carmem Miranda, da, da, da, da Viva a banda, da, da Carmem Miranda, da, da, da, da"
+        },
+        {
+          "option": 1,
+          "agent": 5,
+          "agent_name": "RandomAgent_6",
+          "card_id": 169,
+          "title": "Malemolência",
+          "artist": "Céu",
+          "lyrics": "Veio até mim\nQuem deixou me olhar assim\nNão pediu minha permissão\nNão pude evitar\nTirou meu ar\nFiquei sem chão\n[Refrão 2x]\nMenino bonito, menino bonito, ai\nai menino bonito, menino bonito ai\nÉ tudo o que eu posso lhe adiantar\nO que é um beijo\nSe eu posso ter o teu olhar\nCai na dança, cai\nVem pra roda da malemolência. ô\n[Refrão 4x]\nMenino bonito, menino bonito, ai\nai menino bonito, menino bonito ai\nÉ tudo o que eu posso lhe adiantar\nO que é um beijo\nSe eu posso ter o teu olhar\nCai na dança, cai\nVem pra roda da malemolência . ô\n[2x]\nChegou de mansinho, veio vagarinho*\nÔ menino , não faz assim não, que eu lhe dou todo o meu carinho . é .."
+        },
+        {
+          "option": 2,
+          "agent": 4,
+          "agent_name": "RandomAgent_5",
+          "card_id": 179,
+          "title": "Amor I Love You",
+          "artist": "Marisa Monte",
+          "lyrics": "Deixa eu dizer que te amo\nDeixa eu pensar em você.\nIsso me acalma\nMe acolhe a alma\nIsso me ajuda a viver\nHoje contei pras paredes\nCoisas do meu coração\nPasseei no tempo\nCaminhei nas horas\nMais do que passo a paixão\nÉ um espelho sem razão\nQuer amor fique aqui?\nDeixa eu dizer que te amo\nDeixa eu gostar de você\nIsso me acalma\nMe acolhe a alma\nIsso me ajuda a viver\nHoje contei pras paredes\nCoisas do meu coração\nPasseei no tempo\nCaminhei nas horas\nMais do que passo a paixão\nÉ um espelho sem razão\nQuer amor fique aqui?\nMeu peito agora dispara\nVivo em constante alegria\nÉ o amor que está aqui\nAmor I love you\nAmor I love you\nAmor I love you\nAmor I love you(bis)\nTinha suspirado\nTinha beijado o papel devotamente\nEra a primeira vez que lhe escreviam aquelas\nsentimentalidades\nE o seu orgulho dilatava-se ao calor amoroso que saia\ndelas\nComo um corpo ressequido\nque se estira num banho tépido\nSentia um acréscimo de estima por si mesma!\nE parecia-lhe que entrava enfim numa existência\nsuperiormente interessante...\nOnde cada hora tinha seu intuito diferente\nCada passo conduzia um êxtase...\nE a alma se cobria de um luxo radioso de sensações...\nAmor I love you\nAmor I love you\nAmor I love you\nAmor I love you(bis)"
+        },
+        {
+          "option": 3,
+          "agent": 3,
+          "agent_name": "RandomAgent_4",
+          "card_id": 155,
+          "title": "Samba de Verão",
+          "artist": "Marcos Valle",
+          "lyrics": "Você viu só que amor\nNunca vi coisa assim\nE passou, nem parou\nMas olhou só pra mim\nSe voltar, vou atrás\nVou pedir, vou falar\nVou dizer que o amor\nFoi feitinho pra dar\nOlha, é como o verão\nQuente o coração\nSalta de repente para ver\nA menina que vem\nEla vem, sempre tem\nEsse mar no olhar\nE vai ver, tem de ser\nNunca tem quem amar\nHoje sim, diz que sim\nJá cansei de esperar\nNem parei, nem dormi\nSó pensando em lhe dar\nPeço, mas você não vem, bem!\nDeixo então, falo só, digo ao céu, mas você vem\nVocê viu só que amor\nNunca vi coisa assim\nQue passou nem parou, mas olhou só pra mim\nSe voltar, vou atrás\nVou pedir, vou falar\nVou dizer que o amor foi feitinho pra dar\nOlha, é como o verão\nQuente o coração\nSalta de repente para ver a menina que vem\nEla tem, sempre tem, esse mar do olhar\nE vai ver, tem de ser, nunca tem quem amar\nHoje sim, diz que sim, já cansei de esperar\nNem parei, nem dormi\nSó pensando em lhe dar\nPeço, mas você não vem\nVem!\nDeixo então!\nFalo só\nDigo ao céu\nMas você vem"
+        },
+        {
+          "option": 4,
+          "agent": 2,
+          "agent_name": "RandomAgent_3",
+          "card_id": 108,
+          "title": "É o Amor",
+          "artist": "Zezé Di Camargo & Luciano",
+          "lyrics": "Eu não vou negar que sou louco por você Tô maluco pra te ver Eu não vou negar Eu não vou negar sem você tudo é saudade Você traz felicidade Eu não vou negar *Eu não vou negar você é meu doce mel Meu pedacinho de céu Eu não vou negar Você é minha doce amada Minha alegria Meu conto de fada Minha fantasia A paz que eu preciso pra sobreviver Eu sou o seu apaixonado de alma transparente Um louco alucinado meio inconsequente Um caso complicado de se entender É o amor Que mexe com minha cabeça E me deixa assim Que faz eu pensar em você esquecer de mim Que faz eu esquecer que a vida é feita pra viver É o amor Que veio como um tiro certo no meu coração Que derrubou a base forte da minha paixão E fez eu entender que a vida é nada sem você (* repetir)"
+        },
+        {
+          "option": 5,
+          "agent": 0,
+          "agent_name": "LLMAgent_1",
+          "card_id": 164,
+          "title": "Terra de Gigantes",
+          "artist": "Engenheiros do Hawaii",
+          "lyrics": "Hey mãe!\nEu tenho uma guitarra elétrica\nDurante muito tempo isso foi tudo\nQue eu queria ter\nMas, hey mãe!\nAlguma coisa ficou pra trás\nAntigamente eu sabia exatamente o que fazer\nHey mãe!\nTem uns amigos tocando comigo\nEles são legais, além do mais,\nNão querem nem saber\nMas agora, lá fora\nTodo mundo é uma ilha\nA milhas e milhas e milhas\nDe qualquer lugar\nNessa terra de gigantes\nEu sei, já ouvimos tudo isso antes\nA juventude é uma banda\nNuma propaganda de refrigerantes\nAs revistas, as revoltas, as conquistas\nDa juventude são heranças\nSão motivos pras mudanças de atitude\nOs discos, as danças, os riscos\nDa juventude\nA cara limpa, a roupa suja\nEsperando que o tempo mude\nNessa terra de gigantes\nTudo isso já foi dito antes\nA juventude é uma banda\nNuma propaganda de refrigerantes\nHey mãe!\nJá não esquento a cabeça\nDurante muito tempo\nIsso foi só o que eu podia fazer\nMas, hey hey mãe!\nPor mais que a gente cresça\nHá sempre coisas que a gente\nNão pode entender\nPor isso, mãe\nSó me acorda quando o sol tiver se posto\nEu não quero ver meu rosto\nAntes de anoitecer\nPois agora lá fora,\nO mundo todo é uma ilha\nA milhas e milhas e milhas...\nNessa terra de gigantes\nQue trocam vidas por diamantes\nA juventude é uma banda\nNuma propaganda de refrigerantes\nNessa terra de gigantes\nQue trocam vidas por diamantes\nA juventude é uma banda\nNuma propaganda de refrigerantes\nHey mãe\nHey mãe"
+        }
+      ],
+      "votes": [
+        [],
+        [
+          1,
+          5
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          0,
+          5
+        ]
+      ],
+      "votes_by_agent": [
+        {
+          "agent": 0,
+          "agent_name": "LLMAgent_1",
+          "own_option": 5,
+          "own_card_id": 164,
+          "voted_options": [],
+          "voted_agents": []
+        },
+        {
+          "agent": 1,
+          "agent_name": "RandomAgent_2",
+          "own_option": 0,
+          "own_card_id": 16,
+          "voted_options": [
+            1,
+            5
+          ],
+          "voted_agents": [
+            5,
+            0
+          ]
+        },
+        {
+          "agent": 2,
+          "agent_name": "RandomAgent_3",
+          "own_option": 4,
+          "own_card_id": 108,
+          "voted_options": [
+            1,
+            2
+          ],
+          "voted_agents": [
+            5,
+            4
+          ]
+        },
+        {
+          "agent": 3,
+          "agent_name": "RandomAgent_4",
+          "own_option": 3,
+          "own_card_id": 155,
+          "voted_options": [
+            1,
+            2
+          ],
+          "voted_agents": [
+            5,
+            4
+          ]
+        },
+        {
+          "agent": 4,
+          "agent_name": "RandomAgent_5",
+          "own_option": 2,
+          "own_card_id": 179,
+          "voted_options": [
+            5,
+            0
+          ],
+          "voted_agents": [
+            0,
+            1
+          ]
+        },
+        {
+          "agent": 5,
+          "agent_name": "RandomAgent_6",
+          "own_option": 1,
+          "own_card_id": 169,
+          "voted_options": [
+            0,
+            5
+          ],
+          "voted_agents": [
+            1,
+            0
+          ]
+        }
+      ],
+      "received_votes": [
+        2,
+        3,
+        2,
+        0,
+        0,
+        3
+      ],
+      "received_votes_by_agent": {
+        "1": 2,
+        "5": 3,
+        "4": 2,
+        "3": 0,
+        "2": 0,
+        "0": 3
+      },
+      "scores": [
+        3,
+        5,
+        0,
+        0,
+        5,
+        6
+      ],
+      "cumulative_scores": [
+        31,
+        20,
+        16,
+        25,
+        20,
+        19
+      ],
+      "drawn_cards": [
+        {
+          "agent": 0,
+          "agent_name": "LLMAgent_1",
+          "card_id": 1,
+          "title": "Construção"
+        },
+        {
+          "agent": 1,
+          "agent_name": "RandomAgent_2",
+          "card_id": 102,
+          "title": "O Barquinho"
+        },
+        {
+          "agent": 2,
+          "agent_name": "RandomAgent_3",
+          "card_id": 41,
+          "title": "Bem Que Se Quis"
+        },
+        {
+          "agent": 3,
+          "agent_name": "RandomAgent_4",
+          "card_id": 228,
+          "title": "Deus Te Proteja de Mim"
+        },
+        {
+          "agent": 4,
+          "agent_name": "RandomAgent_5",
+          "card_id": 252,
+          "title": "O Sal da Terra"
+        },
+        {
+          "agent": 5,
+          "agent_name": "RandomAgent_6",
+          "card_id": 141,
+          "title": "Bete Balanço"
+        }
+      ]
+    }
+  ],
+  "final_scores": [
+    31,
+    20,
+    16,
+    25,
+    20,
+    19
+  ],
+  "winner": 0,
+  "total_rounds": 7
+}
