@@ -1,11 +1,10 @@
-#!/usr/bin/env python3
 """Implementação de mini-Fire."""
 
 import sys
 import inspect
 import importlib.util
-import argparse
 import re
+
 
 # ---------------------------------------------------------------------------
 # Utilitários de docstring
@@ -43,11 +42,9 @@ def _parse_docstring(doc: str):
         if re.match(r'^Args\s*:', stripped):
             secao_atual = "args"
             continue
-        
         if re.match(r'^Returns?\s*:', stripped):
             secao_atual = "returns"
             continue
-        
         # Nova seção desconhecida encerra o bloco
         if re.match(r'^\w[\w\s]*\s*:$', stripped) and stripped not in ("", ):
             if secao_atual in ("args", "returns"):
@@ -77,6 +74,7 @@ def _parse_docstring(doc: str):
 
     return descricao, params, retorno
 
+
 # ---------------------------------------------------------------------------
 # Conversão de tipos
 # ---------------------------------------------------------------------------
@@ -103,6 +101,7 @@ def _converter(valor: str, tipo):
     # str ou sem anotação: retorna como está
     return valor
 
+
 # ---------------------------------------------------------------------------
 # Carregamento do módulo
 # ---------------------------------------------------------------------------
@@ -121,6 +120,7 @@ def _carregar_modulo(caminho: str):
         sys.exit(1)
     return modulo
 
+
 def _coletar_funcoes(modulo) -> dict:
     """
     Retorna apenas as funções definidas no nível global do módulo
@@ -133,6 +133,7 @@ def _coletar_funcoes(modulo) -> dict:
         if obj.__module__ == nome_modulo:
             funcoes[nome] = obj
     return funcoes
+
 
 # ---------------------------------------------------------------------------
 # Help
@@ -231,6 +232,7 @@ def _exibir_help_comando(nome: str, func):
     if retorno:
         print(f"\nRetorna: {retorno}")
 
+
 # ---------------------------------------------------------------------------
 # Execução de comando
 # ---------------------------------------------------------------------------
@@ -325,6 +327,7 @@ def _executar_comando(nome: str, func, args_cli: list):
     # Executa
     func(**kwargs)
 
+
 # ---------------------------------------------------------------------------
 # Ponto de entrada principal
 # ---------------------------------------------------------------------------
@@ -356,13 +359,14 @@ def meu_fire(caminho_modulo: str):
 
     _executar_comando(nome_comando, funcoes[nome_comando], args_cli)
 
+
 # ---------------------------------------------------------------------------
 # Entrada via linha de comando
 # ---------------------------------------------------------------------------
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("Uso: python meu_fire.py <arquivo.py> [comando] [args...]")
+        print("Uso: python3 meu_fire.py <arquivo.py> [comando] [args...]")
         sys.exit(1)
 
     caminho = sys.argv[1]
