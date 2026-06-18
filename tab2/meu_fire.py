@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 """Implementação de mini-Fire."""
 
 import sys
