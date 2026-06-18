@@ -37,7 +37,7 @@ python3 run_game.py --force-mock
 
 **Para rodar a partida oficial (com o modelo real integrado):**
 ```bash
-python run_game.py --model /caminho/absoluto/para/o/Phi-3.5-mini-instruct-Q4_K_M.gguf
+python3 run_game.py --model /caminho/absoluto/para/o/Phi-3.5-mini-instruct-Q4_K_M.gguf
 ```
 
 *(O script orquestrará o Game Master, o Serviço LLM, o nosso agente estratégico e 5 agentes aleatórios automaticamente).*
