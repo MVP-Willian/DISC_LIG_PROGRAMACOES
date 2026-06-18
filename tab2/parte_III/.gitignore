@@ -1,1 +1,4 @@
 .venv
+/logs
+/__pycache__
+Phi-3.5-mini-instruct-Q4_K_M.gguf
