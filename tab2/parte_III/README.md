@@ -237,7 +237,7 @@ Esta ferramenta passou a utilizar uma estratégia em múltiplas camadas.
 
 #### Plano A — Escolha semântica via LLM
 
-É enviada à LLM:
+É enviada à LLM um prompt contendo:
 
 - a dica recebida;
 - todas as cartas da mão;
@@ -295,7 +295,7 @@ A votação utiliza quatro camadas sucessivas de decisão.
 
 #### Plano A — JSON da LLM
 
-O agente envia à LLM:
+O agente envia à LLM um prompt contendo:
 
 - a dica do narrador;
 - todas as cartas disponíveis para voto;
