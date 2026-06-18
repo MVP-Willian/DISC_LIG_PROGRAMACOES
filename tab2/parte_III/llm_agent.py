@@ -19,6 +19,7 @@ import argparse
 import asyncio
 import logging
 import re
+import json
 import random
 from typing import Any, Dict, List
 
@@ -92,101 +93,57 @@ class LLMAgent(BaseAgent):
     
     @tool()
     async def select_card_by_clue(self, clue: str) -> Dict[str, Any]:
-        """
-        Escolhe qual carta da mão melhor representa a dica do narrador.
-        Plano A: usa a LLM pedindo estritamente um JSON com o ÍNDICE da música na mão (0..n-1).
-        Plano B: heurística de interseção de palavras-chave (fallback).
-        """
+        """Escolhe qual carta da mão melhor representa a dica do narrador (via JSON)."""
         if not self.hand:
-            logger.warning(f"[{self.name}] Mão vazia recebida em select_card_by_clue.")
+            logger.warning(f"[{self.name}] Mão vazia recebida.")
             return {"chosen_card": {}}
 
         n = len(self.hand)
-        chosen_idx: int | None = None
+        chosen_idx = None
 
-        # PLANO A: NÚCLEO SEMÂNTICO (LLM)
         prompt = (
-            "Sua tarefa é encontrar a música que melhor combina com a dica.\n"
-            f"Dica do narrador: '{clue}'\n\n"
-            "Opções na sua mão:\n"
+            f"Jogo Dixit. Dica: '{clue}'\n"
+            "Qual música melhor representa a dica?\n"
         )
         for idx, song in enumerate(self.hand):
-            snippet = song.get("lyrics", "").replace("\n", " ")[:100]
-            prompt += f"Opção {idx}: {song.get('title', '?')} | Letra: {snippet}\n"
+            snippet = song.get("lyrics", "").replace("\n", " ")[:150]
+            prompt += f"[{idx}] {song.get('title')} | Letra: {snippet}...\n"
 
+        # Template minúsculo para poupar tokens
         prompt += (
-            "\nBaseado na dica, qual o melhor índice?\n"
-            "Responda estritamente com o bloco JSON abaixo:\n"
-            "```json\n"
-            "{\"chosen_index\": numero_aqui}\n"
-            "```"
+            "\nResponda APENAS com um objeto JSON válido no formato exato: {\"c\": numero}"
         )
 
         try:
             raw_text = await asyncio.wait_for(
-                self.llm_generate(prompt, max_tokens=20, temperature=0.1),
-                timeout=60.0,
+                self.llm_generate(prompt, max_tokens=20, temperature=0.2),
+                timeout=45.0,
             )
             
-            # Tentativa 1: Extração JSON
-            parsed = self._extract_json_object(raw_text)
-            if parsed and "chosen_index" in parsed:
-                try:
-                    idx_val = int(parsed["chosen_index"])
+            # Extrai apenas o bloco JSON usando regex para driblar modelos faladores
+            match = re.search(r'\{.*?\}', raw_text, re.DOTALL)
+            if match:
+                json_str = match.group(0)
+                data = json.loads(json_str)
+                
+                if "c" in data and isinstance(data["c"], int):
+                    idx_val = data["c"]
                     if 0 <= idx_val < n:
                         chosen_idx = idx_val
-                except (TypeError, ValueError):
-                    pass
 
-            # Tentativa 2: Regex padrão do professor
+            # Fallback secundário: se o JSON falhar, tenta achar qualquer número
             if chosen_idx is None:
-                chosen_idx = self._parse_song_choice(raw_text, n_options=n)
+                numbers = [int(x) for x in re.findall(r'\b\d\b', raw_text)]
+                valid_numbers = [x for x in numbers if 0 <= x < n]
+                if valid_numbers:
+                    chosen_idx = valid_numbers[0]
 
-            # Tentativa 3 (NOVA): A LLM ignorou o número e escreveu o nome da música?
-            if chosen_idx is None and raw_text:
-                raw_lower = raw_text.lower()
-                for idx, song in enumerate(self.hand):
-                    # Se o título da música da mão estiver dentro da resposta bagunçada da LLM
-                    if song.get("title", "").lower() in raw_lower:
-                        chosen_idx = idx
-                        break
-
-            if chosen_idx is not None:
-                logger.info(
-                    f"[{self.name}] LLM escolheu índice {chosen_idx}: "
-                    f"{self.hand[chosen_idx].get('title')}"
-                )
-
-        except asyncio.TimeoutError:
-            logger.warning(f"[{self.name}] Timeout da LLM em select_card_by_clue. Usando fallback.")
         except Exception as e:
-            logger.warning(f"[{self.name}] Erro na LLM em select_card_by_clue: {e}. Usando fallback.")
+            logger.warning(f"[{self.name}] Falha na LLM em select_card: {e}")
 
-        # PLANO B: FALLBACK HEURÍSTICO (interseção de palavras-chave)
         if chosen_idx is None:
-            clue_words = set(self._extract_keywords(clue))
-
-            best_score = -1.0
-            best_indices: List[int] = []
-
-            for idx, song in enumerate(self.hand):
-                song_words = set(self._song_keywords(song, limit=15))
-                score = len(clue_words.intersection(song_words))
-                if any(word in song.get("title", "").lower() for word in clue_words):
-                    score += 0.5
-
-                if score > best_score:
-                    best_score = score
-                    best_indices = [idx]
-                elif score == best_score:
-                    best_indices.append(idx)
-
-            if best_score <= 0:
-                chosen_idx = random.randrange(n)
-                logger.info(f"[{self.name}] Fallback: nenhuma interseção, escolha aleatória.")
-            else:
-                chosen_idx = best_indices[0]
-                logger.info(f"[{self.name}] Fallback: escolha por interseção de palavras-chave.")
+            logger.info(f"[{self.name}] Usando fallback aleatório para select_card.")
+            chosen_idx = random.randrange(n)
 
         return {"chosen_card": self.hand[chosen_idx]}
     
@@ -221,96 +178,63 @@ class LLMAgent(BaseAgent):
         return -1
 
     @tool()
-    async def vote(self, clue: str, options: List[Dict[str, Any]], my_chosen_card: Dict[str, Any]) -> Dict[str, List[int]]:
-        """
-        Escolhe em quais cartas votar na rodada.
-        Deve retornar exatamente 2 índices distintos, nenhum deles igual ao
-        índice da própria carta jogada.
-
-        Plano A: pede à LLM um JSON com dois índices (0 a 5).
-        Plano B: garimpa números na MESMA resposta crua, sem nova chamada à LLM.
-        Plano C: heurística de interseção de palavras-chave.
-        Plano D (rede de segurança): completa com índices válidos restantes,
-        garantindo que o contrato (2 votos distintos, sem auto-voto) nunca
-        seja violado, mesmo em cenários inesperados.
-        """
+    async def vote(self, clue: str, options: List[Dict[str, Any]], my_chosen_card: Dict[str, Any]) -> Dict[str, Any]:
+        """Vota nas cartas dos oponentes (via JSON)."""
         my_idx = self._find_own_option_index(options, my_chosen_card)
         valid_indices = [i for i in range(len(options)) if i != my_idx]
-        final_votes: List[int] = []
+        final_votes = []
 
-        prompt = f"Dica do narrador: '{clue}'\n"
-        prompt += "Quais duas destas músicas melhor combinam com a dica?\n\n"
-        for i, opt in enumerate(options):
-            if i == my_idx:
-                continue
-            snippet = opt.get("lyrics", "").replace("\n", " ")[:80]
-            prompt += f"Opção {i}: {opt.get('title', '?')} | Letra: {snippet}\n"
-        prompt += (
-            '\nRetorne APENAS um JSON no formato exato: {"votes": [opcaoA, opcaoB]} '
-            "usando os números das Opções acima (0 a 5)."
+        prompt = (
+            f"Jogo Dixit. Dica: '{clue}'.\n"
+            "Escolha as DUAS músicas que MELHOR combinam com a dica.\n\n"
         )
+        for i in valid_indices:
+            opt = options[i]
+            snippet = opt.get("lyrics", "").replace("\n", " ")[:120]
+            prompt += f"[{i}] {opt.get('title')} - Letra: {snippet}...\n"
 
-        raw_text = ""
+        prompt += "\nResponda APENAS com um objeto JSON válido no formato exato: {\"v\": [num1, num2]}"
+
         try:
+            # Aumentamos o max_tokens para 20 para acomodar uma lista no JSON
             raw_text = await asyncio.wait_for(
-                self.llm_generate(prompt, max_tokens=25, temperature=0.1),
-                timeout=60.0,
+                self.llm_generate(prompt, max_tokens=20, temperature=0.1),
+                timeout=45.0,
             )
-        except Exception as e:
-            logger.warning(f"[{self.name}] LLM falhou em vote: {e}")
+            
+            # Extração segura do JSON via regex
+            match = re.search(r'\{.*?\}', raw_text, re.DOTALL)
+            if match:
+                json_str = match.group(0)
+                data = json.loads(json_str)
+                
+                if "v" in data and isinstance(data["v"], list):
+                    for n_val in data["v"]:
+                        if isinstance(n_val, int) and n_val in valid_indices and n_val not in final_votes:
+                            final_votes.append(n_val)
+                        if len(final_votes) == 2:
+                            break
 
-        # PLANO A: parsing como JSON
-        if raw_text:
-            parsed = self._extract_json_object(raw_text)
-            if parsed and isinstance(parsed.get("votes"), list):
-                for v in parsed["votes"]:
-                    try:
-                        v_int = int(v)
-                    except (TypeError, ValueError):
-                        continue
-                    if v_int in valid_indices and v_int not in final_votes:
-                        final_votes.append(v_int)
+            # Fallback secundário garimpeiro
+            if len(final_votes) < 2:
+                nums = [int(x) for x in re.findall(r'\b\d\b', raw_text)]
+                for n_val in nums:
+                    if n_val in valid_indices and n_val not in final_votes:
+                        final_votes.append(n_val)
                     if len(final_votes) == 2:
                         break
 
-        # PLANO B: garimpar números na MESMA resposta crua (sem nova chamada à LLM;
-        # o Plano A já usou a única chamada que fizemos ao serviço)
-        if len(final_votes) < 2 and raw_text:
-            for n in (int(x) for x in re.findall(r"\d+", raw_text)):
-                if n in valid_indices and n not in final_votes:
-                    final_votes.append(n)
-                if len(final_votes) == 2:
-                    break
+        except Exception as e:
+            logger.warning(f"[{self.name}] Falha na LLM em vote: {e}")
 
-        # PLANO C: heurística de interseção de palavras-chave
-        if len(final_votes) < 2:
-            logger.info(f"[{self.name}] Usando fallback heurístico para votação.")
-            scored = [
-                (self._score_song_for_clue(options[i], clue), i)
-                for i in valid_indices
-                if i not in final_votes
-            ]
-            scored.sort(reverse=True, key=lambda x: x[0])
-            for _, idx in scored:
-                final_votes.append(idx)
-                if len(final_votes) == 2:
-                    break
-
-        # PLANO D: rede de segurança final - garante o contrato sempre,
-        # independentemente do que tenha acontecido acima. Itera sobre uma
-        # lista finita (não usa "while True"), então nunca trava o agente.
+        # Rede de Segurança Férrea
         final_votes = [v for v in final_votes if v in valid_indices]
-        deduped: List[int] = []
-        for v in final_votes:
-            if v not in deduped:
-                deduped.append(v)
-        final_votes = deduped
-
+        
         if len(final_votes) < 2:
+            logger.info(f"[{self.name}] Falta de votos válidos da LLM. Completando aleatoriamente.")
             remaining = [i for i in valid_indices if i not in final_votes]
             random.shuffle(remaining)
-            added = remaining[: 2 - len(final_votes)]
-            final_votes.extend(added)
+            final_votes.extend(remaining[: 2 - len(final_votes)])
 
         return {"votes": final_votes[:2]}
 

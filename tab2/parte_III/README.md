@@ -233,9 +233,9 @@ garantindo que nunca deixe de responder ao Game Master.
 
 ### `select_card_by_clue` (Melômano)
 
-Esta ferramenta passou a utilizar uma estratégia em múltiplas camadas.
+Esta ferramenta utiliza uma estratégia em múltiplas camadas focada em eficiência de tokens.
 
-#### Plano A — Escolha semântica via LLM
+#### Plano A — Escolha semântica via LLM e extração de JSON
 
 É enviada à LLM um prompt contendo:
 
@@ -243,36 +243,17 @@ Esta ferramenta passou a utilizar uma estratégia em múltiplas camadas.
 - todas as cartas da mão;
 - um pequeno trecho da letra de cada música.
 
-O prompt exige que o modelo responda exclusivamente com um JSON no formato:
+O prompt exige que o modelo responda exclusivamente com um JSON minificado no formato:
 
 ```json
-{"chosen_index": X}
+{"c": numero}
 ```
 
-Utilizamos **índices da mão (0 até n−1)** em vez dos IDs reais das músicas, reduzindo significativamente as alucinações.
+Utilizamos **índices da mão (0 até n−1)** em vez dos IDs reais das músicas, reduzindo as alucinações e economizando tokens. Para garantir a leitura mesmo quando o modelo adiciona textos extras (ex: "Aqui está o JSON:"), utilizamos uma expressão regular (`re.search(r'\{.*?\}')`) para isolar e extrair apenas o bloco de dados antes do *parsing*.
 
-Após a resposta, o agente tenta extrair o índice por três mecanismos sucessivos:
+#### Plano B — Regex e Fallback Aleatório
 
-1. extração do JSON;
-2. extração por regex;
-3. procura pelo título da música caso a LLM ignore o formato solicitado e responda apenas com o nome da canção.
-
----
-
-#### Plano B — Fallback heurístico
-
-Caso nenhuma das estratégias anteriores produza um índice válido (erro, timeout ou resposta inválida), o agente utiliza uma heurística baseada em palavras-chave.
-
-O procedimento consiste em:
-
-- extrair palavras relevantes da dica;
-- extrair palavras relevantes de cada música;
-- calcular a interseção entre ambos os conjuntos;
-- atribuir um bônus quando alguma palavra da dica aparece também no título da música.
-
-A carta com maior pontuação é selecionada.
-
-Caso nenhuma música apresente qualquer relação com a dica, uma carta da mão é escolhida aleatoriamente, garantindo que o agente sempre responda.
+Caso o JSON seja inválido, o agente tenta extrair qualquer número isolado da resposta da LLM utilizando regex. Se nenhuma das estratégias anteriores produza um índice válido (erro, timeout ou resposta incompreensível), o agente utiliza um *fallback* aleatório. Em um jogo abstrato, escolher uma carta aleatória costuma ser menos arriscado do que cruzar palavras exatas, o que frequentemente atrai votos em armadilhas óbvias.
 
 ---
 
@@ -291,52 +272,32 @@ Se ainda assim não conseguir identificar sua carta, registra um aviso em log e 
 
 ### `vote`
 
-A votação utiliza quatro camadas sucessivas de decisão.
+A votação também utiliza camadas sucessivas de decisão com foco em extração segura.
 
-#### Plano A — JSON da LLM
+#### Plano A — JSON Minificado da LLM
 
-O agente envia à LLM um prompt contendo:
-
-- a dica do narrador;
-- todas as cartas disponíveis para voto;
-- pequenos trechos das respectivas letras.
-
-O prompt exige exatamente o formato:
+O agente envia à LLM um prompt ocultando a sua própria carta e pede as duas melhores opções no formato exato:
 
 ```json
-{"votes":[A,B]}
+{"v": [num1, num2]}
 ```
 
-Os votos válidos são imediatamente aceitos.
+Assim como na escolha da carta, um isolamento do bloco JSON é feito via expressão regular para prevenir falhas de leitura causadas por "modelos faladores".
 
----
+#### Plano B — Extração por regex (Garimpeiro)
 
-#### Plano B — Extração por regex
+Caso o JSON não seja válido, nenhuma nova chamada à LLM é realizada. O agente reaproveita a mesma resposta textual e procura todos os números presentes através de expressões regulares, filtrando e validando os índices encontrados.
 
-Caso o JSON não seja válido, nenhuma nova chamada à LLM é realizada.
+#### Plano C — Rede de segurança
 
-O agente reutiliza exatamente a mesma resposta textual e procura números através de expressões regulares, aproveitando respostas parcialmente corretas.
-
----
-
-#### Plano C — Heurística
-
-Se ainda não houver dois votos válidos, cada carta recebe uma pontuação calculada pela função `_score_song_for_clue`, baseada na similaridade entre a dica e a música.
-
-As cartas com maior pontuação são escolhidas.
-
----
-
-#### Plano D — Rede de segurança
-
-Antes de retornar ao Game Master, o agente:
+Antes de retornar ao Game Master, o agente aplica uma validação férrea:
 
 - remove votos duplicados;
 - remove votos inválidos;
 - garante que nunca vote em sua própria carta;
-- completa automaticamente a lista com índices válidos restantes caso ainda faltem votos.
+- completa automaticamente a lista com índices válidos aleatórios caso a LLM não tenha retornado a quantidade correta de votos.
 
-Dessa forma, o contrato do protocolo é sempre respeitado, independentemente da resposta da LLM.
+Dessa forma, o contrato do protocolo é sempre respeitado.
 
 ---
 
@@ -344,62 +305,31 @@ Dessa forma, o contrato do protocolo é sempre respeitado, independentemente da 
 
 ### 1. Alucinação da LLM
 
-Inicialmente a LLM frequentemente respondia utilizando IDs reais do catálogo de músicas, que não correspondiam às posições das cartas disponíveis durante a rodada.
+Inicialmente a LLM frequentemente respondia utilizando IDs reais do catálogo de músicas, que não correspondiam às posições das cartas.
 
 **Solução**
 
-Passamos a solicitar apenas os índices da mão (`0...n-1`), reduzindo drasticamente esse tipo de erro.
-
-Além disso, implementamos três formas independentes de recuperar a escolha do modelo:
-
-- leitura do JSON;
-- regex;
-- reconhecimento do título da música.
+Passamos a solicitar apenas os índices da mão (`0...n-1`), reduzindo drasticamente esse tipo de erro. Além disso, utilizamos temperaturas baixas (0.1) nestas etapas para focar na precisão estrutural em vez de criatividade.
 
 ---
 
 ### 2. Respostas fora do formato esperado
 
-Mesmo utilizando prompts rígidos, a LLM eventualmente respondia com textos livres em vez do JSON solicitado.
+Mesmo utilizando prompts rígidos, a LLM de pequeno porte eventualmente respondia com textos livres ou adicionava frases antes do JSON ("Aqui está sua resposta...").
 
 **Solução**
 
-Em vez de desperdiçar uma nova chamada ao modelo, o agente reaproveita a própria resposta produzida pela LLM:
+Em vez de desperdiçar uma nova chamada ao modelo, o agente:
+- isola preventivamente o bloco JSON usando regex (`re.search(r'\{.*?\}')`);
+- se isso falhar, procura apenas os números no texto bruto via regex (`\b\d\b`);
+- por fim, preenche falhas com *fallbacks* aleatórios válidos.
 
-- primeiro tenta interpretar como JSON;
-- depois procura números via regex;
-- por fim utiliza heurísticas determinísticas.
+Isso tornou o agente muito mais robusto, rápido e com menor consumo de tokens.
 
-Isso tornou o agente muito mais robusto e reduziu o tempo médio de resposta.
+### 3. Restrição de Tokens e Limitações de Modelos Pequenos
 
----
-
-### 3. Garantia do protocolo de votação
-
-Durante os testes verificou-se que respostas inválidas poderiam resultar em:
-
-- votos duplicados;
-- votos inexistentes;
-- tentativa de votar na própria carta;
-- quantidade incorreta de votos.
+Durante os testes com o modelo de pequeno porte, notamos que respostas longas consumiam muito tempo de inferência, atingiam o limite do `max_tokens` (causando truncamento) e aumentavam a chance do modelo se "perder" no meio da geração.
 
 **Solução**
 
-Foi implementada uma rede de segurança final que sempre:
-
-- elimina votos inválidos;
-- elimina duplicatas;
-- impede auto-voto;
-- completa automaticamente os votos restantes utilizando apenas índices válidos.
-
-Assim, independentemente do comportamento da LLM, o agente sempre retorna exatamente dois votos válidos ao Game Master.
-
----
-
-### 4. Identificação da própria carta
-
-Dependíamos inicialmente apenas do identificador (`id`) enviado pelo protocolo.
-
-**Solução**
-
-Foi implementado o método `_find_own_option_index`, que também compara `(título, artista)` quando necessário, tornando o agente mais resistente a pequenas alterações no formato das mensagens trocadas com o Game Master.
+Otimizamos a comunicação adotando uma estrutura **JSON minificada**. Em vez de chaves descritivas como `{"chosen_index": 2}`, passamos a usar chaves de um único caractere, como `{"c": 2}` para escolha de cartas e `{"v": [0, 1]}` para votação. Além disso, ajustamos finamente a quantidade de caracteres das letras das músicas enviadas no prompt e reduzimos drasticamente o `max_tokens` esperado. Isso forçou o modelo a ser direto e conciso, acelerando as respostas e evitando cortes por timeout.
