@@ -93,7 +93,18 @@ class LLMAgent(BaseAgent):
     
     @tool()
     async def select_card_by_clue(self, clue: str) -> Dict[str, Any]:
-        """Escolhe qual carta da mão melhor representa a dica do narrador (via JSON)."""
+        """Escolhe qual carta da mão melhor representa a dica do narrador.
+
+        Monta um prompt curto contendo a dica e os trechos iniciais de cada 
+        letra disponível na mão, instruindo a LLM a devolver APENAS um JSON 
+        estrito com o índice escolhido. Como os modelos tendem a ser faladores 
+        (adicionando textos como "Aqui está o JSON..."), usamos regex para 
+        tentar extrair apenas o bloco de dados. Se a extração falhar, aplica 
+        um fallback secundário que procura qualquer número isolado na resposta. 
+        Se nem assim conseguirmos uma resposta válida (ou houver timeout), 
+        loga um aviso e escolhe uma carta aleatória, garantindo que o agente 
+        nunca trave o andamento da partida."""
+
         if not self.hand:
             logger.warning(f"[{self.name}] Mão vazia recebida.")
             return {"chosen_card": {}}
@@ -179,7 +190,19 @@ class LLMAgent(BaseAgent):
 
     @tool()
     async def vote(self, clue: str, options: List[Dict[str, Any]], my_chosen_card: Dict[str, Any]) -> Dict[str, Any]:
-        """Vota nas cartas dos oponentes (via JSON)."""
+        """Vota nas cartas dos oponentes que melhor combinam com a dica do narrador.
+
+        Primeiro, utiliza a função auxiliar para identificar e excluir a nossa 
+        própria carta das opções, evitando votos inválidos. Envia os trechos 
+        das músicas restantes para a LLM pedindo um JSON com dois votos.
+        Assim como na escolha de cartas, tenta forçar a extração via regex 
+        para ignorar alucinações de texto do modelo. Possui uma rede de 
+        segurança férrea em camadas: garimpa números brutos caso o JSON venha 
+        quebrado, filtra qualquer tentativa da LLM de votar em índices 
+        inexistentes ou na própria carta e, em último caso, completa os votos 
+        faltantes de forma aleatória. Isso garante máxima resiliência na competição.
+        """
+        
         my_idx = self._find_own_option_index(options, my_chosen_card)
         valid_indices = [i for i in range(len(options)) if i != my_idx]
         final_votes = []
