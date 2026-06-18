@@ -89,18 +89,13 @@ class LLMAgent(BaseAgent):
 
         return {"clue": clue}
 
+    
     @tool()
     async def select_card_by_clue(self, clue: str) -> Dict[str, Any]:
         """
         Escolhe qual carta da mão melhor representa a dica do narrador.
-        Plano A: usa a LLM, que responde com o ÍNDICE da música na mão (0..n-1).
+        Plano A: usa a LLM pedindo estritamente um JSON com o ÍNDICE da música na mão (0..n-1).
         Plano B: heurística de interseção de palavras-chave (fallback).
-
-        Nota: pedimos o ÍNDICE na mão, não o ID do catálogo. O espaço de
-        respostas válidas é muito menor (0..3 em vez de IDs arbitrários do
-        catálogo), o que reduz alucinação e permite reaproveitar o parser
-        já testado pelo professor (_parse_song_choice) em vez de garimpar
-        o primeiro número que aparecer na resposta.
         """
         if not self.hand:
             logger.warning(f"[{self.name}] Mão vazia recebida em select_card_by_clue.")
@@ -110,27 +105,58 @@ class LLMAgent(BaseAgent):
         chosen_idx: int | None = None
 
         # PLANO A: NÚCLEO SEMÂNTICO (LLM)
-        prompt = f"Dica do narrador: '{clue}'\n"
-        prompt += "Estas são as músicas da sua mão:\n"
+        prompt = (
+            "Sua tarefa é encontrar a música que melhor combina com a dica.\n"
+            f"Dica do narrador: '{clue}'\n\n"
+            "Opções na sua mão:\n"
+        )
         for idx, song in enumerate(self.hand):
             snippet = song.get("lyrics", "").replace("\n", " ")[:100]
-            prompt += f"{idx}: {song.get('title', '?')} | Letra: {snippet}\n"
+            prompt += f"Opção {idx}: {song.get('title', '?')} | Letra: {snippet}\n"
+
         prompt += (
-            f"\nResponda APENAS com o número do ÍNDICE (0 a {n - 1}) "
-            "da música que melhor combina com a dica."
+            "\nBaseado na dica, qual o melhor índice?\n"
+            "Responda estritamente com o bloco JSON abaixo:\n"
+            "```json\n"
+            "{\"chosen_index\": numero_aqui}\n"
+            "```"
         )
 
         try:
-            llm_response = await asyncio.wait_for(
-                self.llm_generate(prompt, max_tokens=8, temperature=0.3),
+            raw_text = await asyncio.wait_for(
+                self.llm_generate(prompt, max_tokens=20, temperature=0.1),
                 timeout=60.0,
             )
-            chosen_idx = self._parse_song_choice(llm_response, n_options=n)
+            
+            # Tentativa 1: Extração JSON
+            parsed = self._extract_json_object(raw_text)
+            if parsed and "chosen_index" in parsed:
+                try:
+                    idx_val = int(parsed["chosen_index"])
+                    if 0 <= idx_val < n:
+                        chosen_idx = idx_val
+                except (TypeError, ValueError):
+                    pass
+
+            # Tentativa 2: Regex padrão do professor
+            if chosen_idx is None:
+                chosen_idx = self._parse_song_choice(raw_text, n_options=n)
+
+            # Tentativa 3 (NOVA): A LLM ignorou o número e escreveu o nome da música?
+            if chosen_idx is None and raw_text:
+                raw_lower = raw_text.lower()
+                for idx, song in enumerate(self.hand):
+                    # Se o título da música da mão estiver dentro da resposta bagunçada da LLM
+                    if song.get("title", "").lower() in raw_lower:
+                        chosen_idx = idx
+                        break
+
             if chosen_idx is not None:
                 logger.info(
                     f"[{self.name}] LLM escolheu índice {chosen_idx}: "
                     f"{self.hand[chosen_idx].get('title')}"
                 )
+
         except asyncio.TimeoutError:
             logger.warning(f"[{self.name}] Timeout da LLM em select_card_by_clue. Usando fallback.")
         except Exception as e:
@@ -248,7 +274,7 @@ class LLMAgent(BaseAgent):
                         break
 
         # PLANO B: garimpar números na MESMA resposta crua (sem nova chamada à LLM;
-        # o Plano A já usou a única chamada que faremos ao serviço)
+        # o Plano A já usou a única chamada que fizemos ao serviço)
         if len(final_votes) < 2 and raw_text:
             for n in (int(x) for x in re.findall(r"\d+", raw_text)):
                 if n in valid_indices and n not in final_votes:
@@ -283,7 +309,8 @@ class LLMAgent(BaseAgent):
         if len(final_votes) < 2:
             remaining = [i for i in valid_indices if i not in final_votes]
             random.shuffle(remaining)
-            final_votes.extend(remaining[: 2 - len(final_votes)])
+            added = remaining[: 2 - len(final_votes)]
+            final_votes.extend(added)
 
         return {"votes": final_votes[:2]}
 

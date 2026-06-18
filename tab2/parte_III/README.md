@@ -1,46 +1,58 @@
 # Nota Secreta — Agente Estratégico LLM
 
-Este projeto contém a implementação de um agente estratégico autônomo para o jogo **Nota Secreta** (uma variação de Dixit com músicas brasileiras). O sistema é baseado na integração de um modelo de linguagem local (Phi-3.5-mini-instruct) com rotinas de fallback heurístico para garantir estabilidade e resiliência em um ambiente distribuído.
+Este projeto contém a implementação de um agente estratégico autônomo para o jogo **Nota Secreta** (uma variação de Dixit com músicas brasileiras). O sistema utiliza uma arquitetura híbrida, combinando um modelo de linguagem local (Phi-3.5-mini-instruct) com heurísticas determinísticas e múltiplos mecanismos de *fallback*, garantindo robustez mesmo diante de respostas inválidas, alucinações ou indisponibilidade temporária da LLM.
 
 ## 1. Integrantes do Grupo
 * Lucas de Souza Cerveira Pereira
-* Mikaelle Costa de Sanatana
+* Mikaelle Costa de Santana
 * Michael Willian Pereira Vieira
 
 ---
 
 ## 2. Instruções de instalação
+
 *As instruções de instalação são as mesmas fornecidas na arquitetura base do professor.*
 
-1. Acesse a pasta do projeto contendo o llm_agent.
+1. Acesse a pasta do projeto contendo o `llm_agent.py`.
 2. Crie e ative um ambiente virtual:
+
 ```bash
-   python3 -m venv venv
-   source venv/bin/activate 
-   ```
+python3 -m venv venv
+source venv/bin/activate
+```
+
 3. Instale as dependências:
+
 ```bash
-   pip install -r requirements.txt
-   ```
+pip install -r requirements.txt
+```
+
 4. Certifique-se de baixar o modelo LLM (`Phi-3.5-mini-instruct-Q4_K_M.gguf`) e colocá-lo em um diretório acessível.
 
 ---
 
 ## 3. Como executar o código
 
-O projeto pode ser executado facilmente através do orquestrador `run_game.py`:
+O projeto pode ser executado através do orquestrador `run_game.py`.
 
-**Para rodar em modo Mock (teste rápido sem carregar o modelo LLM pesado):**
+**Modo Mock (sem carregar a LLM):**
+
 ```bash
 python3 run_game.py --force-mock
 ```
 
-**Para rodar a partida oficial (com o modelo real integrado):**
+**Modo completo (modelo real):**
+
 ```bash
 python3 run_game.py --model /caminho/absoluto/para/o/Phi-3.5-mini-instruct-Q4_K_M.gguf
 ```
 
-*(O script orquestrará o Game Master, o Serviço LLM, o nosso agente estratégico e 5 agentes aleatórios automaticamente).*
+O script iniciará automaticamente:
+
+- Game Master;
+- Serviço da LLM;
+- Nosso agente estratégico;
+- Cinco agentes aleatórios.
 
 ---
 
@@ -175,28 +187,219 @@ Total_rounds: 8
 
 ## 5. Descrição dos prompts e das heurísticas implementadas no agente
 
-Nossa arquitetura é **Híbrida Defensiva**. Para as ferramentas (tools) do agente, combinamos chamadas à LLM com *fallbacks* (planos de contingência) puramente algorítmicos.
+Nossa arquitetura segue uma estratégia **LLM + múltiplos fallbacks**, procurando utilizar a capacidade semântica do modelo sempre que possível, mas garantindo que todas as ferramentas continuem funcionando mesmo quando a LLM produz respostas inválidas, incompletas ou sofre timeout.
 
-* **`choose_card` (Narrador):**
-  * *Heurística:* Usa um cálculo simples baseado no comprimento da letra[cite: 4]. Avalia o tamanho de todas as letras da mão, calcula a mediana e seleciona a música cujo tamanho mais se aproxima desse valor[cite: 4].
-* **`send_clue` (Narrador):**
-  * *Prompt:* Envia as 60 primeiras palavras da letra e instrui a LLM a retornar uma dica de no máximo 6 palavras[cite: 4]. 
-  * *Heurística:* A saída passa pelo método `_sanitize_clue`[cite: 4]. Se a LLM falhar completamente, o agente adota uma dica *fallback* de segurança ("coisa estranha")[cite: 4].
-* **`select_card_by_clue` (Melômano):**
-  * *Prompt:* Pede restritamente que a LLM retorne o **Índice (0 a n-1)** da música na mão (em vez do ID do catálogo) para reduzir alucinações[cite: 4]. Usamos Regex (`_parse_song_choice`) para extrair esse dígito[cite: 4].
-  * *Heurística (Fallback):* Em caso de timeout (limite de 60s), fazemos a interseção de palavras-chave da dica com as palavras de cada música (`_song_keywords`)[cite: 4].
-* **`vote` (Melômano):**
-  * *Heurística Inicial:* Usamos `_find_own_option_index` para localizar nossa própria carta na mesa (por ID ou Título+Artista) e proibi-la de receber votos[cite: 4].
-  * *Prompt:* Requisita um JSON rigoroso: `{"votes": [opcaoA, opcaoB]}`[cite: 4].
-  * *Heurísticas de Fallback:* Se o `json.loads` falhar, aplicamos Regex (`re.findall`) na mesma resposta crua para resgatar os números[cite: 4]. Se ainda faltarem votos, usamos a função `_score_song_for_clue` para classificar e votar nas cartas restantes mais semelhantes à dica[cite: 4].
+### `receive_hand`
+
+Recebe a mão distribuída pelo Game Master e apenas armazena as cartas localmente para utilização nas próximas etapas da rodada.
+
+---
+
+### `choose_card` (Narrador)
+
+Nesta versão a escolha da carta continua sendo totalmente heurística.
+
+**Heurística implementada**
+
+- Calcula o tamanho da letra de cada música da mão.
+- Calcula a mediana desses comprimentos.
+- Escolhe a música cujo comprimento está mais próximo da mediana.
+
+A ideia é evitar tanto letras extremamente curtas quanto extremamente longas, produzindo uma carta "mediana" que tende a oferecer uma quantidade razoável de conceitos para a geração da dica.
+
+---
+
+### `send_clue` (Narrador)
+
+A geração da dica utiliza a LLM.
+
+O agente envia aproximadamente as 60 primeiras palavras da letra juntamente com um prompt que instrui o modelo a:
+
+- produzir apenas uma dica;
+- utilizar no máximo o número especificado de palavras;
+- não gerar explicações adicionais.
+
+Após receber a resposta, ela passa pelo método `_sanitize_clue`, responsável por remover formatações indesejadas e adequar a saída ao formato esperado pelo jogo.
+
+Caso a saída da LLM seja inutilizável após a sanitização, o agente utiliza a dica de segurança:
+
+```
+coisa estranha
+```
+
+garantindo que nunca deixe de responder ao Game Master.
+
+---
+
+### `select_card_by_clue` (Melômano)
+
+Esta ferramenta passou a utilizar uma estratégia em múltiplas camadas.
+
+#### Plano A — Escolha semântica via LLM
+
+É enviada à LLM:
+
+- a dica recebida;
+- todas as cartas da mão;
+- um pequeno trecho da letra de cada música.
+
+O prompt exige que o modelo responda exclusivamente com um JSON no formato:
+
+```json
+{"chosen_index": X}
+```
+
+Utilizamos **índices da mão (0 até n−1)** em vez dos IDs reais das músicas, reduzindo significativamente as alucinações.
+
+Após a resposta, o agente tenta extrair o índice por três mecanismos sucessivos:
+
+1. extração do JSON;
+2. extração por regex;
+3. procura pelo título da música caso a LLM ignore o formato solicitado e responda apenas com o nome da canção.
+
+---
+
+#### Plano B — Fallback heurístico
+
+Caso nenhuma das estratégias anteriores produza um índice válido (erro, timeout ou resposta inválida), o agente utiliza uma heurística baseada em palavras-chave.
+
+O procedimento consiste em:
+
+- extrair palavras relevantes da dica;
+- extrair palavras relevantes de cada música;
+- calcular a interseção entre ambos os conjuntos;
+- atribuir um bônus quando alguma palavra da dica aparece também no título da música.
+
+A carta com maior pontuação é selecionada.
+
+Caso nenhuma música apresente qualquer relação com a dica, uma carta da mão é escolhida aleatoriamente, garantindo que o agente sempre responda.
+
+---
+
+### `_find_own_option_index`
+
+Antes da votação, o agente precisa descobrir qual das cartas sobre a mesa é a sua própria.
+
+Para isso:
+
+1. tenta localizar a carta utilizando seu `id`;
+2. caso o protocolo utilize outro formato, realiza um fallback comparando `(título, artista)`.
+
+Se ainda assim não conseguir identificar sua carta, registra um aviso em log e prossegue normalmente, evitando que uma incompatibilidade de formato interrompa a partida.
+
+---
+
+### `vote`
+
+A votação utiliza quatro camadas sucessivas de decisão.
+
+#### Plano A — JSON da LLM
+
+O agente envia à LLM:
+
+- a dica do narrador;
+- todas as cartas disponíveis para voto;
+- pequenos trechos das respectivas letras.
+
+O prompt exige exatamente o formato:
+
+```json
+{"votes":[A,B]}
+```
+
+Os votos válidos são imediatamente aceitos.
+
+---
+
+#### Plano B — Extração por regex
+
+Caso o JSON não seja válido, nenhuma nova chamada à LLM é realizada.
+
+O agente reutiliza exatamente a mesma resposta textual e procura números através de expressões regulares, aproveitando respostas parcialmente corretas.
+
+---
+
+#### Plano C — Heurística
+
+Se ainda não houver dois votos válidos, cada carta recebe uma pontuação calculada pela função `_score_song_for_clue`, baseada na similaridade entre a dica e a música.
+
+As cartas com maior pontuação são escolhidas.
+
+---
+
+#### Plano D — Rede de segurança
+
+Antes de retornar ao Game Master, o agente:
+
+- remove votos duplicados;
+- remove votos inválidos;
+- garante que nunca vote em sua própria carta;
+- completa automaticamente a lista com índices válidos restantes caso ainda faltem votos.
+
+Dessa forma, o contrato do protocolo é sempre respeitado, independentemente da resposta da LLM.
 
 ---
 
 ## 6. Dificuldades encontradas e soluções
 
-1. **Alucinação de IDs Inexistentes:** A LLM frequentemente respondia com IDs do catálogo de músicas que nem sequer estavam na mão do jogador ou na mesa.
-   * *Solução:* Alteramos o prompt na função `select_card_by_clue` para solicitar o **Índice posicional na mão (0 a 3)**, em vez do ID[cite: 4]. Limitar o escopo de opções da LLM praticamente zerou as alucinações.
-2. **Quebra de Protocolo e Timeouts na Votação:** O processo de extrair exatamente dois votos distintos, sem incluir a própria carta, gerava strings sujas da LLM ou causava timeouts (acima de 60s) se tentássemos pedir a resposta múltiplas vezes.
-   * *Solução:* Otimizamos o `vote` para fazer **apenas uma chamada** ao modelo. Extraímos o JSON e, se falhar, reciclamos a string original passando uma Regex por cima[cite: 4]. Se tudo der errado, uma rotina de repescagem algorítmica escolhe as cartas finais, garantindo o envio rápido ao *Game Master*[cite: 4].
-3. **Identificação da Própria Carta na Votação:** Depender exclusivamente da chave `id` enviada pelo *Game Master* era frágil e poderia quebrar nosso filtro de não votar na própria carta.
-   * *Solução:* Implementamos o método `_find_own_option_index`, que possui um fallback próprio para comparar `title` + `artist` se o ID falhar[cite: 4].
+### 1. Alucinação da LLM
+
+Inicialmente a LLM frequentemente respondia utilizando IDs reais do catálogo de músicas, que não correspondiam às posições das cartas disponíveis durante a rodada.
+
+**Solução**
+
+Passamos a solicitar apenas os índices da mão (`0...n-1`), reduzindo drasticamente esse tipo de erro.
+
+Além disso, implementamos três formas independentes de recuperar a escolha do modelo:
+
+- leitura do JSON;
+- regex;
+- reconhecimento do título da música.
+
+---
+
+### 2. Respostas fora do formato esperado
+
+Mesmo utilizando prompts rígidos, a LLM eventualmente respondia com textos livres em vez do JSON solicitado.
+
+**Solução**
+
+Em vez de desperdiçar uma nova chamada ao modelo, o agente reaproveita a própria resposta produzida pela LLM:
+
+- primeiro tenta interpretar como JSON;
+- depois procura números via regex;
+- por fim utiliza heurísticas determinísticas.
+
+Isso tornou o agente muito mais robusto e reduziu o tempo médio de resposta.
+
+---
+
+### 3. Garantia do protocolo de votação
+
+Durante os testes verificou-se que respostas inválidas poderiam resultar em:
+
+- votos duplicados;
+- votos inexistentes;
+- tentativa de votar na própria carta;
+- quantidade incorreta de votos.
+
+**Solução**
+
+Foi implementada uma rede de segurança final que sempre:
+
+- elimina votos inválidos;
+- elimina duplicatas;
+- impede auto-voto;
+- completa automaticamente os votos restantes utilizando apenas índices válidos.
+
+Assim, independentemente do comportamento da LLM, o agente sempre retorna exatamente dois votos válidos ao Game Master.
+
+---
+
+### 4. Identificação da própria carta
+
+Dependíamos inicialmente apenas do identificador (`id`) enviado pelo protocolo.
+
+**Solução**
+
+Foi implementado o método `_find_own_option_index`, que também compara `(título, artista)` quando necessário, tornando o agente mais resistente a pequenas alterações no formato das mensagens trocadas com o Game Master.
