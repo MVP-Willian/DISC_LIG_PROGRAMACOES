@@ -255,13 +255,13 @@ A carta é escolhida pela função `_clueability_score`, que mede o quão "cluá
 é cada carta usando **apenas o texto da própria carta** (sem corpus global). A
 pontuação combina:
 
-- **diversidade lexical** — palavras distintas / total (peso **0,45**);
-- **especificidade** — fração de palavras longas (≥ 6 letras), proxy de palavras
+- **diversidade lexical**: palavras distintas / total (peso **0,45**);
+- **especificidade**: fração de palavras longas (≥ 6 letras), proxy de palavras
   concretas (peso **0,35**);
-- **material suficiente** — quantidade de palavras de conteúdo, saturando em 20
+- **material suficiente**: quantidade de palavras de conteúdo, saturando em 20
   (peso **0,20**);
-- **bônus de título** informativo como âncora temática (peso **0,05**);
-- **penalidade suave** por densidade de clichês de amor (peso **−0,30**).
+- **bônus de título**: informativo como âncora temática (peso **0,05**);
+- **penalidade suave**: por densidade de clichês de amor (peso **−0,30**).
 
 A escolha é o `argmax` determinístico desses valores, com desempate estável por
 índice. A pontuação de cada carta é isolada por `try/except`: uma carta
