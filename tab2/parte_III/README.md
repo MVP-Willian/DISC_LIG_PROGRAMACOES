@@ -234,7 +234,7 @@ Pela regra de pontuação do Dixit, o Narrador só pontua no chamado **Caso B**:
 demais) **ou** todos acertam (dica óbvia demais), o Narrador recebe **0** e cada
 adversário ganha **+2**. Como cada acertador ainda ganha **+3** à custa da dica,
 o agente busca uma dica de **dificuldade intermediária** e de caráter
-**temático/abstrato** — evocando clima, imagem ou sentimento, sem copiar a letra
+**temático/abstrato**, evocando clima, imagem ou sentimento, sem copiar a letra
 e sem usar o título. Esse é o critério que orienta toda a implementação.
 
 ### 12.2. Divisão LLM × heurística
@@ -286,7 +286,7 @@ O método segue um pipeline tolerante a falhas:
    chega ≤ 80 palavras do Game Master), reduzindo latência e a tentação de copiar.
 
 2. **Consulta à LLM** em até duas tentativas, com temperaturas distintas (0,55 e
-   0,85) — a segunda só ocorre se a primeira não passar na validação. Usa
+   0,85), a segunda só ocorre se a primeira não passar na validação. Usa
    `max_tokens=24` (dentro da faixa recomendada de 20–35) e sequências de
    `stop` para conter modelos "faladores".
 
@@ -305,7 +305,7 @@ O método segue um pipeline tolerante a falhas:
    evitando repetir a dica anterior.
 
 **Garantias do método:** `send_clue` nunca propaga exceção, nunca devolve dica
-vazia e nunca excede `max_words` — requisitos de robustez e de protocolo.
+vazia e nunca excede `max_words`, requisitos de robustez e de protocolo.
 
 ### 12.5. Robustez e generalização
 
@@ -315,7 +315,7 @@ vazia e nunca excede `max_words` — requisitos de robustez e de protocolo.
 - O teto `max_words` é tratado como **restrição inegociável**: a saída é limitada
   a `[1, 6]` palavras e o mínimo de palavras úteis se adapta ao teto.
 - A tokenização de palavras usa um casador **Unicode**, resistente a acentos e
-  grafias incomuns — importante porque a base do torneio é uma amostra de uma
+  grafias incomuns, importante porque a base do torneio é uma amostra de uma
   coleção bem maior (~146 mil letras), mais heterogênea que a de desenvolvimento.
 - Nenhuma decisão usa corpus global nem músicas fixas no código: o comportamento
   e o custo não mudam quando a base é maior ou diferente. A penalidade de clichê é
@@ -339,7 +339,7 @@ Log file: logs/partida_AAAAMMDD_HHMMSS.json
 A seguir, duas rodadas em que o **agente 0 (`LLMAgent_1`) é o Narrador**, no
 formato do `render_log_readable.py`. As colunas `0`–`5` indicam **qual jogador
 votou** em cada carta (o Narrador não vota); `Pts` é a pontuação do dono da carta
-na rodada. *Exemplo ilustrativo do formato de saída — as dicas exatas dependem da
+na rodada. *Exemplo ilustrativo do formato de saída, as dicas exatas dependem da
 saída do Phi-3.5 e variam por música; em modo `--force-mock` o serviço emite uma
 dica-placeholder fixa.*
 
@@ -355,7 +355,7 @@ id  card_id  title              0  1  2  3  4  5  Pts
 5   172      Sá Marina             x                 2
 ```
 
-Na rodada 3, **2 dos 5** melômanos votaram na carta do Narrador — alguns, mas não
+Na rodada 3, **2 dos 5** melômanos votaram na carta do Narrador, alguns, mas não
 todos. É o **Caso B**: o Narrador ganha **+3**. Esse é o resultado-alvo da
 estratégia.
 
@@ -408,3 +408,62 @@ rodadas evidencia por que a dica precisa ser de dificuldade intermediária.
   isolada, foram usados testes de unidade (saneamento, validação, fallback,
   conformidade de teto) e partidas completas em modo `--force-mock`, garantindo a
   integração com o Game Master independentemente da disponibilidade do modelo.
+
+## 15. Agente: o Melômano (`select_card_by_clue` e `vote`)
+
+
+### 15.1. Estratégia
+
+Como Melômano, o agente tem dois objetivos a cada rodada: (a) jogar, da própria
+mão, a carta-isca que melhor combina com a dica (`select_card_by_clue`) e (b)
+votar nas duas opções mais prováveis de serem a carta do narrador (`vote`). Ambas
+são tarefas de **correspondência semântica** entre a dica e as letras, e por isso
+são delegadas à LLM, com **parsing determinístico e fallbacks** para garantir
+robustez. O alvo é maximizar os pontos do Melômano: acertar a carta do narrador
+(+3 no Caso B) e receber votos na própria isca (até +3).
+
+### 15.2. Seleção da carta (`select_card_by_clue`)
+
+- Monta um prompt curto com a dica e cada carta da mão no formato
+  `[índice] título | Letra: <trecho até 150 caracteres>`.
+- Solicita à LLM **apenas um JSON estrito** `{"c": índice}`
+  (`max_tokens=20`, `temperature=0.2`, `timeout=45s`).
+- Extrai o bloco JSON por expressão regular (tolerando modelos "faladores") e
+  valida que o índice está em `0 ≤ índice < n`.
+- *Fallback* secundário: se o JSON falhar, garimpa um dígito válido isolado na
+  resposta.
+- Último recurso: escolhe uma carta válida ao acaso. A tool nunca lança exceção e
+  sempre devolve uma carta.
+
+### 15.3. Votação (`vote`)
+
+- Primeiro identifica e **exclui a própria carta** via `_find_own_option_index`,
+  que casa por `id` e, como rede de segurança, por `título + artista`, atendendo
+  à regra de não votar na própria carta.
+- Lista as opções restantes como `[i] título - Letra: <trecho até 120 caracteres>`
+  e pede à LLM um JSON `{"v": [i1, i2]}` (`max_tokens=20`, `temperature=0.1`,
+  `timeout=45s`).
+- Faz o *parsing* por regex e mantém apenas índices válidos, distintos e que não
+  sejam a própria carta.
+- Rede de segurança em camadas: se o JSON vier quebrado, garimpa dígitos válidos;
+  se ainda faltarem votos, completa aleatoriamente entre as opções válidas.
+- Garante **exatamente dois votos distintos e válidos**, conforme o protocolo.
+
+### 15.4. Robustez e parsing tolerante
+
+As duas tools envolvem a chamada à LLM em `asyncio.wait_for(timeout=45s)` e
+`try/except`, com `logging` das decisões e fallbacks. A combinação de extração
+tolerante de JSON, garimpo de dígitos e preenchimento aleatório garante que o
+Melômano **nunca trava a partida** e sempre devolve uma saída válida no protocolo.
+As temperaturas baixas (0,2 e 0,1) favorecem decisões mais precisas, conforme as
+boas práticas indicadas no enunciado.
+
+### 15.5. Dificuldades e soluções (Melômano)
+
+- **Modelos que envolvem o JSON em texto extra.** *Solução:* extração do bloco
+  `{...}` por expressão regular, ignorando o restante da resposta.
+- **JSON ausente ou malformado.** *Solução:* *fallback* que garimpa dígitos
+  válidos da resposta como índices.
+- **Risco de voto inválido** (própria carta ou índice inexistente). *Solução:*
+  exclusão da própria carta e filtragem por índices válidos, com preenchimento
+  aleatório que assegura dois votos distintos.
