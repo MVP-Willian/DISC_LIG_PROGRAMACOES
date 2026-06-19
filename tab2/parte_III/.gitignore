@@ -1,1 +1,6 @@
 .venv
+/logs
+/__pycache__
+/venv
+Phi-3.5-mini-instruct-Q4_K_M.gguf
+brazilian_songs.csv
